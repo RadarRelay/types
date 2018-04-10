@@ -1,13 +1,14 @@
 import {BigNumber} from 'bignumber.js';
+export {SignedOrder} from '0x.js';
 
 export interface RelaySignedOrder {
-  signedOrder: SignedOrder;
   orderHash: string;
-  state: 'OPEN'|'EXPIRED'|'CLOSED'|'UNFUNDED';
-  pending: {
-    fillAmount: BigNumber;
-    cancelAmount: BigNumber;
-  };
-  remainingTakerTokenAmount: BigNumber;
-  rate?: BigNumber;
+  state: 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
+  baseTokenAddress: string;
+  quoteTokenAddress: string;
+  remainingBaseTokenAmount: BigNumber; // Converted amount
+  remainingQuoteTokenAmount: BigNumber; // Converted amount
+  price: BigNumber;
+  createdDate: BigNumber; // Unix timestamp
+  signedOrder: SignedOrder;
 }
