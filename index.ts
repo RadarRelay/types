@@ -1,5 +1,6 @@
 import {BigNumber} from 'bignumber.js';
-export {SignedOrder} from '0x.js';
+import {SignedOrder} from '@0xproject/types';
+export {SignedOrder} from '@0xproject/types';
 
 export interface RelaySignedOrder {
   orderHash: string;
