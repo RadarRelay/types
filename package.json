@@ -1,0 +1,14 @@
+{
+  "name": "radar-types",
+  "version": "0.0.0",
+  "description": "Types used by the Radar Relay API",
+  "main": "index.ts",
+  "author": "Radar Relay<dev@radarrelay.com>",
+  "scripts": {
+    "test": "echo \"No Tests Defined\" && exit 0"
+  },
+  "dependencies": {
+    "bignumber.js": "^5.0.0",
+    "0x.js": "^0.27.2"
+  }
+}
