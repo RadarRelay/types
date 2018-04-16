@@ -73,19 +73,6 @@ export interface RelayOrderFeeResponse {
 }
 
 
-// ZRX Signed Order with included order state.
-export interface RelaySignedOrder {
-    orderHash: string;
-    state: 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
-    baseTokenAddress: string;
-    quoteTokenAddress: string;
-    remainingBaseTokenAmount: BigNumber, // converted amount
-    remainingQuoteTokenAmount: BigNumber // converted amount
-    price: BigNumber;
-    createdDate: BigNumber; // unix
-    signedOrder: SignedOrder;
-}
-
 // Relay Events
 
 // Relay Events utilized by the Websocket Endpoint.
