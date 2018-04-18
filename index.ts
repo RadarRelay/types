@@ -74,3 +74,11 @@ export interface RelayCandle extends Ohlc {
     quoteTokenAddress: string;
     quoteTokenVolume: BigNumber;
 }
+
+// Relay Candle
+export interface Ohlc {
+    open: BigNumber;
+    high: BigNumber;
+    low: BigNumber;
+    close: BigNumber;
+}
