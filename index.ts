@@ -3,15 +3,15 @@ import {SignedOrder} from '@0xproject/types';
 export {SignedOrder} from '@0xproject/types';
 
 export interface RelaySignedOrder {
-  orderHash: string;
-  state: 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
-  baseTokenAddress: string;
-  quoteTokenAddress: string;
-  remainingBaseTokenAmount: BigNumber; // Converted amount
-  remainingQuoteTokenAmount: BigNumber; // Converted amount
-  price: BigNumber;
-  createdDate: BigNumber; // Unix timestamp
-  signedOrder: SignedOrder;
+    orderHash: string;
+    state: 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
+    baseTokenAddress: string;
+    quoteTokenAddress: string;
+    remainingBaseTokenAmount: BigNumber; // Converted amount
+    remainingQuoteTokenAmount: BigNumber; // Converted amount
+    price: BigNumber;
+    createdDate: BigNumber; // Unix timestamp
+    signedOrder: SignedOrder;
 }
 
 export interface RelayMarket {
@@ -50,48 +50,6 @@ export interface RelayLimitOrder {
 }
 
 
-export interface RelayMarketOrder {
-    type: string; // "bid"|"ask",
-    quantity: BigNumber;
-}
-
-
-export interface RelayMarketOrderResponse {
-    averagePrice: BigNumber;
-    bestPrice: BigNumber;
-    worstPrice: BigNumber;
-    spread: BigNumber;
-    orders: SignedOrder[];
-}
-
-
-export interface RelayOrderFeeResponse {
-    makerFee: BigNumber;
-    takerFee: BigNumber;
-    feeRecipient: string;
-    gasEstimate?: BigNumber;
-}
-
-
-// Relay Events
-
-// Relay Events utilized by the Websocket Endpoint.
-export interface RelayEvent {
-    baseTokenAddress: string;
-    quoteTokenAddress: string;
-    order: RelaySignedOrder;
-}
-
-export interface RelayNewOrder extends RelayEvent {
-}
-
-export interface RelayCancelOrder extends RelayEvent {
-}
-
-export interface RelayRemoveOrder extends RelayEvent {
-    reason: string;
-}
-
 export interface RelayFill extends RelayEvent {
     transactionHash: string;
     blockNumber: number;
@@ -104,20 +62,6 @@ export interface RelayFill extends RelayEvent {
     filledQuoteTokenAmount: BigNumber; // converted
     orderHash: string;
     timestamp: number;
-}
-
-export interface WebsocketEvent {
-    action: 'FILL' | 'NEW' | 'CANCEL' | 'REMOVE'; // TODO 'CANDLE'|'TICKER'|...
-    event: RelayFill | RelayNewOrder | RelayCancelOrder | RelayRemoveOrder;
-}
-
-
-// Relay Candle
-export interface Ohlc {
-    open: BigNumber;
-    high: BigNumber;
-    low: BigNumber;
-    close: BigNumber;
 }
 
 export interface RelayCandle extends Ohlc {
