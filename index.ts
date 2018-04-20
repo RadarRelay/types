@@ -75,6 +75,61 @@ export interface RelayCandle extends Ohlc {
     quoteTokenVolume: BigNumber;
 }
 
+
+
+
+
+
+export interface RelayMarketOrder {
+    type: string; // "bid"|"ask",
+    quantity: BigNumber;
+}
+
+
+export interface RelayMarketOrderResponse {
+    averagePrice: BigNumber;
+    bestPrice: BigNumber;
+    worstPrice: BigNumber;
+    spread: BigNumber;
+    orders: SignedOrder[];
+}
+
+
+export interface RelayOrderFeeResponse {
+    makerFee: BigNumber;
+    takerFee: BigNumber;
+    feeRecipient: string;
+    gasEstimate?: BigNumber;
+}
+
+
+// Relay Events
+
+// Relay Events utilized by the Websocket Endpoint.
+export interface RelayEvent {
+    baseTokenAddress: string;
+    quoteTokenAddress: string;
+    order: RelaySignedOrder;
+}
+
+export interface RelayNewOrder extends RelayEvent {
+}
+
+export interface RelayCancelOrder extends RelayEvent {
+}
+
+export interface RelayRemoveOrder extends RelayEvent {
+    reason: string;
+}
+
+
+
+export interface WebsocketEvent {
+    action: 'FILL' | 'NEW' | 'CANCEL' | 'REMOVE'; // TODO 'CANDLE'|'TICKER'|...
+    event: RelayFill | RelayNewOrder | RelayCancelOrder | RelayRemoveOrder;
+}
+
+
 // Relay Candle
 export interface Ohlc {
     open: BigNumber;
