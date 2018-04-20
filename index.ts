@@ -21,10 +21,6 @@ export interface RadarToken {
   decimals: number;
   zeroex_official: boolean;
   active: boolean;
-  createdDate: BigNumber;
-  rate: {
-    block: number;
-    WETH: BigNumber;
-  };
+  createdDate: string;
   quote: boolean;
 }
