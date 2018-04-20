@@ -2,7 +2,7 @@ import {BigNumber} from 'bignumber.js';
 import {SignedOrder} from '@0xproject/types';
 export {SignedOrder} from '@0xproject/types';
 
-export interface RelaySignedOrder {
+export interface RadarSignedOrder {
   orderHash: string;
   state: 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
   baseTokenAddress: string;
@@ -12,4 +12,19 @@ export interface RelaySignedOrder {
   price: BigNumber;
   createdDate: BigNumber; // Unix timestamp
   signedOrder: SignedOrder;
+}
+
+export interface RadarToken {
+  address: string;
+  symbol: string;
+  name: string;
+  decimals: number;
+  zeroex_official: boolean;
+  active: boolean;
+  createdDate: BigNumber;
+  rate: {
+    block: number;
+    WETH: BigNumber;
+  };
+  quote: boolean;
 }
