@@ -4,6 +4,7 @@ export {SignedOrder} from '@0xproject/types';
 
 export interface RadarSignedOrder {
   orderHash: string;
+  orderType: 'BUY' | 'SELL';
   state: 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
   baseTokenAddress: string;
   quoteTokenAddress: string;
