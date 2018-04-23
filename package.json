@@ -1,6 +1,6 @@
 {
   "name": "radar-types",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Types used by the Radar Relay API",
   "main": "index.ts",
   "author": "Radar Relay<dev@radarrelay.com>",
