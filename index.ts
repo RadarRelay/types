@@ -29,113 +29,113 @@ export interface RadarToken {
   quote: boolean;
 }
 
-export interface RelayMarket {
-    id: string; // "ZRX-WETH",
-    baseTokenAddress: string;
-    quoteTokenAddress: string;
-    baseTokenDecimals: number;
-    quoteTokenDecimals: number;
-    quoteIncrement: BigNumber; // analogous to the current "precision"
-    displayName: string; // "ZRX/WETH",
-    minOrderSize: BigNumber; // calculated min quote size based on current market rate
-    maxOrderSize: BigNumber; // calculated max quote size based on current market rate
+export interface RadarMarket {
+  id: string; // "ZRX-WETH",
+  baseTokenAddress: string;
+  quoteTokenAddress: string;
+  baseTokenDecimals: number;
+  quoteTokenDecimals: number;
+  quoteIncrement: BigNumber; // analogous to the current "precision"
+  displayName: string; // "ZRX/WETH",
+  minOrderSize: BigNumber; // calculated min quote size based on current market rate
+  maxOrderSize: BigNumber; // calculated max quote size based on current market rate
 }
 
-export interface RelayTicker {
-    transactionHash: string; // last trade tx hash
-    price: BigNumber; // last trade price
-    size: BigNumber; // last trade size (in quote)
-    bid: BigNumber; // best bid
-    ask: BigNumber; // best ask
-    volume: BigNumber; // 24hr volume of market in quote
-    timestamp: BigNumber // last trade time in unix time (seconds)
+export interface RadarTicker {
+  transactionHash: string; // last trade tx hash
+  price: BigNumber; // last trade price
+  size: BigNumber; // last trade size (in quote)
+  bid: BigNumber; // best bid
+  ask: BigNumber; // best ask
+  volume: BigNumber; // 24hr volume of market in quote
+  timestamp: BigNumber // last trade time in unix time (seconds)
 }
 
-export interface RelayBook {
-    baseTokenAddress: string;
-    quoteTokenAddress: string;
-    bids: RadarSignedOrder[];
-    asks: RadarSignedOrder[];
+export interface RadarBook {
+  baseTokenAddress: string;
+  quoteTokenAddress: string;
+  bids: RadarSignedOrder[];
+  asks: RadarSignedOrder[];
 }
 
-export interface RelayLimitOrder {
-    type: string; // "bid"|"ask",
-    signedOrder: RadarSignedOrder;
+export interface RadarLimitOrder {
+  type: OrderType;
+  quantity: BigNumber;
+  price: BigNumber;
 }
 
-export interface RelayFill extends RelayEvent {
-    transactionHash: string;
-    blockNumber: number;
-    maker: string;
-    taker: string;
-    feeRecipient: string;
-    paidMakerFee: BigNumber; // converted
-    paidTakerFee: BigNumber; // converted
-    filledBaseTokenAmount: BigNumber; // converted
-    filledQuoteTokenAmount: BigNumber; // converted
-    orderHash: string;
-    timestamp: number;
+export interface RadarMarketOrder {
+  type: OrderType;
+  quantity: BigNumber;
 }
 
-export interface RelayCandle extends Ohlc {
-    startBlock: number;
-    startBlockTimestamp: number;
-    endBlock: number; // the last block included in this candle (inclusive)
-    endBlockTimestamp: number;
-    baseTokenAddress: string;
-    baseTokenVolume: BigNumber;
-    quoteTokenAddress: string;
-    quoteTokenVolume: BigNumber;
+export interface RadarMarketOrderResponse {
+  averagePrice: BigNumber;
+  bestPrice: BigNumber;
+  worstPrice: BigNumber;
+  spread: BigNumber;
+  orders: SignedOrder[];
 }
 
-export interface RelayMarketOrder {
-    type: string; // "bid"|"ask",
-    quantity: BigNumber;
+export interface RadarOrderFeeResponse {
+  makerFee: BigNumber;
+  takerFee: BigNumber;
+  feeRecipient: string;
+  gasEstimate?: BigNumber;
 }
 
-export interface RelayMarketOrderResponse {
-    averagePrice: BigNumber;
-    bestPrice: BigNumber;
-    worstPrice: BigNumber;
-    spread: BigNumber;
-    orders: SignedOrder[];
+// Radar Candle
+export interface Ohlc {
+  open: BigNumber;
+  high: BigNumber;
+  low: BigNumber;
+  close: BigNumber;
 }
 
-export interface RelayOrderFeeResponse {
-    makerFee: BigNumber;
-    takerFee: BigNumber;
-    feeRecipient: string;
-    gasEstimate?: BigNumber;
+export interface RadarCandle extends Ohlc {
+  startBlock: number;
+  startBlockTimestamp: number;
+  endBlock: number; // the last block included in this candle (inclusive)
+  endBlockTimestamp: number;
+  baseTokenAddress: string;
+  baseTokenVolume: BigNumber;
+  quoteTokenAddress: string;
+  quoteTokenVolume: BigNumber;
 }
 
-// Relay Events
+// Radar Events
 
-// Relay Events utilized by the Websocket Endpoint.
-export interface RelayEvent {
-    baseTokenAddress: string;
-    quoteTokenAddress: string;
-    order: RadarSignedOrder;
+// Radar Events utilized by the Websocket Endpoint.
+export interface RadarEvent {
+  baseTokenAddress: string;
+  quoteTokenAddress: string;
+  order: RadarSignedOrder;
+}
+export interface RadarFill extends RadarEvent {
+  transactionHash: string;
+  blockNumber: number;
+  maker: string;
+  taker: string;
+  feeRecipient: string;
+  paidMakerFee: BigNumber; // converted
+  paidTakerFee: BigNumber; // converted
+  filledBaseTokenAmount: BigNumber; // converted
+  filledQuoteTokenAmount: BigNumber; // converted
+  orderHash: string;
+  timestamp: number;
 }
 
-export interface RelayNewOrder extends RelayEvent {
+export interface RadarNewOrder extends RadarEvent {
 }
 
-export interface RelayCancelOrder extends RelayEvent {
+export interface RadarCancelOrder extends RadarEvent {
 }
 
-export interface RelayRemoveOrder extends RelayEvent {
-    reason: string;
+export interface RadarRemoveOrder extends RadarEvent {
+  reason: string;
 }
 
 export interface WebsocketEvent {
-    action: 'FILL' | 'NEW' | 'CANCEL' | 'REMOVE'; // TODO 'CANDLE'|'TICKER'|...
-    event: RelayFill | RelayNewOrder | RelayCancelOrder | RelayRemoveOrder;
-}
-
-// Relay Candle
-export interface Ohlc {
-    open: BigNumber;
-    high: BigNumber;
-    low: BigNumber;
-    close: BigNumber;
+  action: 'FILL' | 'NEW' | 'CANCEL' | 'REMOVE'; // TODO 'CANDLE'|'TICKER'|...
+  event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
 }
