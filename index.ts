@@ -2,10 +2,12 @@ import {BigNumber} from 'bignumber.js';
 import {SignedOrder} from '@0xproject/types';
 export {SignedOrder} from '@0xproject/types';
 
+export type OrderType = 'BID' | 'ASK';
+export type OrderState = 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
 
 export interface RadarSignedOrder {
   orderHash: string;
-  orderType: OrderType;
+  type: OrderType;
   state: OrderState;
   baseTokenAddress: string;
   quoteTokenAddress: string;
@@ -39,7 +41,6 @@ export interface RelayMarket {
     maxOrderSize: BigNumber; // calculated max quote size based on current market rate
 }
 
-
 export interface RelayTicker {
     transactionHash: string; // last trade tx hash
     price: BigNumber; // last trade price
@@ -61,7 +62,6 @@ export interface RelayLimitOrder {
     type: string; // "bid"|"ask",
     signedOrder: RelaySignedOrder;
 }
-
 
 export interface RelayFill extends RelayEvent {
     transactionHash: string;
@@ -93,7 +93,6 @@ export interface RelayMarketOrder {
     quantity: BigNumber;
 }
 
-
 export interface RelayMarketOrderResponse {
     averagePrice: BigNumber;
     bestPrice: BigNumber;
@@ -102,14 +101,12 @@ export interface RelayMarketOrderResponse {
     orders: SignedOrder[];
 }
 
-
 export interface RelayOrderFeeResponse {
     makerFee: BigNumber;
     takerFee: BigNumber;
     feeRecipient: string;
     gasEstimate?: BigNumber;
 }
-
 
 // Relay Events
 
@@ -130,13 +127,10 @@ export interface RelayRemoveOrder extends RelayEvent {
     reason: string;
 }
 
-
-
 export interface WebsocketEvent {
     action: 'FILL' | 'NEW' | 'CANCEL' | 'REMOVE'; // TODO 'CANDLE'|'TICKER'|...
     event: RelayFill | RelayNewOrder | RelayCancelOrder | RelayRemoveOrder;
 }
-
 
 // Relay Candle
 export interface Ohlc {
@@ -145,8 +139,3 @@ export interface Ohlc {
     low: BigNumber;
     close: BigNumber;
 }
-
-
-
-export type OrderType = 'BUY' | 'SELL';
-export type OrderState = 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
