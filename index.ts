@@ -54,13 +54,13 @@ export interface RelayTicker {
 export interface RelayBook {
     baseTokenAddress: string;
     quoteTokenAddress: string;
-    bids: RelaySignedOrder[];
-    asks: RelaySignedOrder[];
+    bids: RadarSignedOrder[];
+    asks: RadarSignedOrder[];
 }
 
 export interface RelayLimitOrder {
     type: string; // "bid"|"ask",
-    signedOrder: RelaySignedOrder;
+    signedOrder: RadarSignedOrder;
 }
 
 export interface RelayFill extends RelayEvent {
@@ -114,7 +114,7 @@ export interface RelayOrderFeeResponse {
 export interface RelayEvent {
     baseTokenAddress: string;
     quoteTokenAddress: string;
-    order: RelaySignedOrder;
+    order: RadarSignedOrder;
 }
 
 export interface RelayNewOrder extends RelayEvent {
