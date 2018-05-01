@@ -2,7 +2,7 @@ import {BigNumber} from 'bignumber.js';
 import {SignedOrder} from '@0xproject/types';
 export {SignedOrder} from '@0xproject/types';
 
-export type OrderType = 'BID' | 'ASK';
+export type OrderType = 'BUY' | 'SELL';
 export type OrderState = 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
 
 export interface RadarSignedOrder {
@@ -62,6 +62,7 @@ export interface RadarLimitOrder {
   type: OrderType;
   quantity: BigNumber;
   price: BigNumber;
+  expirationUnixTimestampSec: BigNumber
 }
 
 export interface RadarMarketOrder {
