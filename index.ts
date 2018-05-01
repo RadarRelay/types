@@ -62,7 +62,7 @@ export interface RadarLimitOrder {
   type: OrderType;
   quantity: BigNumber;
   price: BigNumber;
-  expirationUnixTimestampSec: BigNumber
+  expiration: BigNumber
 }
 
 export interface RadarMarketOrder {
