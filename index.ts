@@ -7,6 +7,7 @@ export type RadarOrderType = 'BID' | 'ASK';
 export type RadarOrderState = 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
 
 export interface RadarToken {
+  ID: number;
   address: string;
   symbol: string;
   name: string;
