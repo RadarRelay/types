@@ -127,6 +127,12 @@ export interface RadarFill extends RadarEvent {
   timestamp: number;
 }
 
+export interface RadarSubscribeMessage {
+  type: 'book' | 'ticker' | 'candle';
+  market: string;
+  requestId?: number;
+}
+
 export interface RadarNewOrder extends RadarEvent {
 }
 
