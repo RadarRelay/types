@@ -2,9 +2,22 @@ import {BigNumber} from 'bignumber.js';
 import {SignedOrder} from '@0xproject/types';
 export {SignedOrder} from '@0xproject/types';
 
-export type UserOrderType = 'BUY' | 'SELL';
-export type RadarOrderType = 'BID' | 'ASK';
-export type RadarOrderState = 'OPEN' | 'EXPIRED' | 'CLOSED' | 'UNFUNDED';
+export enum UserOrderType {
+  BUY = 'BUY',
+  SELL = 'SELL'
+}
+
+export enum RadarOrderType {
+  BID = 'BID',
+  ASK = 'ASK'
+}
+
+export enum RadarOrderState {
+  OPEN = 'OPEN',
+  EXPIRED = 'EXPIRED',
+  CLOSED = 'CLOSED',
+  UNFUNDED = 'UNFUNDED'
+}
 
 export interface RadarToken {
   ID: number;
