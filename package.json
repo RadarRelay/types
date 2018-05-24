@@ -1,9 +1,11 @@
 {
   "name": "radar-types",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Types used by the Radar Relay API",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Radar Relay<dev@radarrelay.com>",
+  "outDir": "dist",
   "scripts": {
     "test": "echo \"No Tests Defined\" && exit 0"
   },
