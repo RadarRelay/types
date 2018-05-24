@@ -19,6 +19,19 @@ export enum RadarOrderState {
   CLOSED = 'CLOSED',
   UNFUNDED = 'UNFUNDED'
 }
+
+export enum RadarSubscriptionType {
+  BOOK = 'BOOK',
+  TICKER = 'TICKER',
+  CANDLE = 'CANDLE'
+}
+
+export enum WebsocketAction {
+  FILL = 'FILL',
+  NEW = 'NEW',
+  CANCEL = 'CANCEL',
+  REMOVE = 'REMOVE'
+}
 ```
 
 ## Interfaces
@@ -189,10 +202,19 @@ interface RadarFill extends RadarEvent {
 }
 ```
 
+### RadarSubscribeMessage
+```javascript
+export interface RadarSubscribeMessage {
+  type: RadarSubscriptionType;
+  market: string;
+  requestId?: number;
+}
+```
+
 ### WebsocketEvent
 ```javascript
 interface WebsocketEvent {
-  action: 'FILL'|'NEW'|'CANCEL'|'REMOVE'; // TODO 'CANDLE'|'TICKER'|...
+  action: WebsocketAction;
   event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
 }
 ```

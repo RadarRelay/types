@@ -14,9 +14,23 @@ export enum RadarOrderType {
 
 export enum RadarOrderState {
   OPEN = 'OPEN',
+  FILLED = 'FILLED',
+  CANCELED = 'CANCELED',
   EXPIRED = 'EXPIRED',
-  CLOSED = 'CLOSED',
   UNFUNDED = 'UNFUNDED'
+}
+
+export enum RadarSubscriptionType {
+  BOOK = 'BOOK',
+  TICKER = 'TICKER',
+  CANDLE = 'CANDLE'
+}
+
+export enum WebsocketAction {
+  FILL = 'FILL',
+  NEW = 'NEW',
+  CANCEL = 'CANCEL',
+  REMOVE = 'REMOVE'
 }
 
 export interface RadarToken {
@@ -60,7 +74,7 @@ export interface RadarLimitOrder {
   type: UserOrderType;
   quantity: BigNumber;
   price: BigNumber;
-  expiration: BigNumber
+  expiration: BigNumber;
 }
 
 export interface RadarMarketOrder {
@@ -90,7 +104,7 @@ export interface RadarTicker {
   bid: BigNumber; // best bid
   ask: BigNumber; // best ask
   volume: BigNumber; // 24hr volume of market in quote
-  timestamp: BigNumber // last trade time in unix time (seconds)
+  timestamp: BigNumber; // last trade time in unix time (seconds)
 }
 
 export interface RadarBook {
@@ -141,7 +155,7 @@ export interface RadarFill extends RadarEvent {
 }
 
 export interface RadarSubscribeMessage {
-  type: 'book' | 'ticker' | 'candle';
+  type: RadarSubscriptionType;
   market: string;
   requestId?: number;
 }
@@ -157,6 +171,6 @@ export interface RadarRemoveOrder extends RadarEvent {
 }
 
 export interface WebsocketEvent {
-  action: 'FILL' | 'NEW' | 'CANCEL' | 'REMOVE'; // TODO 'CANDLE'|'TICKER'|...
+  action: WebsocketAction; 
   event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
 }
