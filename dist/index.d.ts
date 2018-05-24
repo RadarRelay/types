@@ -11,9 +11,21 @@ export declare enum RadarOrderType {
 }
 export declare enum RadarOrderState {
     OPEN = "OPEN",
+    FILLED = "FILLED",
+    CANCELED = "CANCELED",
     EXPIRED = "EXPIRED",
-    CLOSED = "CLOSED",
     UNFUNDED = "UNFUNDED",
+}
+export declare enum RadarSubscriptionType {
+    BOOK = "BOOK",
+    TICKER = "TICKER",
+    CANDLE = "CANDLE",
+}
+export declare enum WebsocketAction {
+    FILL = "FILL",
+    NEW = "NEW",
+    CANCEL = "CANCEL",
+    REMOVE = "REMOVE",
 }
 export interface RadarToken {
     ID: number;
@@ -122,7 +134,7 @@ export interface RadarFill extends RadarEvent {
     timestamp: number;
 }
 export interface RadarSubscribeMessage {
-    type: 'book' | 'ticker' | 'candle';
+    type: RadarSubscriptionType;
     market: string;
     requestId?: number;
 }
@@ -134,6 +146,6 @@ export interface RadarRemoveOrder extends RadarEvent {
     reason: string;
 }
 export interface WebsocketEvent {
-    action: 'FILL' | 'NEW' | 'CANCEL' | 'REMOVE';
+    action: WebsocketAction;
     event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
 }
