@@ -20,17 +20,22 @@ export enum RadarOrderState {
   UNFUNDED = 'UNFUNDED'
 }
 
-export enum RadarSubscriptionType {
-  BOOK = 'BOOK',
-  TICKER = 'TICKER',
-  CANDLE = 'CANDLE'
-}
-
 export enum WebsocketAction {
   FILL = 'FILL',
   NEW = 'NEW',
   CANCEL = 'CANCEL',
   REMOVE = 'REMOVE'
+}
+
+export enum WebsocketRequestTopic {
+  BOOK = 'BOOK',
+  TICKER = 'TICKER',
+  CANDLE = 'CANDLE'
+}
+
+export enum WebsocketRequestType {
+  SUBSCRIBE = 'SUBSCRIBE',
+  UNSUBSCRIBE = 'UNSUBSCRIBE'
 }
 
 export interface RadarToken {
@@ -154,10 +159,19 @@ export interface RadarFill extends RadarEvent {
   timestamp: number;
 }
 
-export interface RadarSubscribeMessage {
-  type: RadarSubscriptionType;
+export interface RadarWebsocketRequest {
+  type: WebsocketRequestType;
+  topic: WebsocketRequestTopic;
   market: string;
+}
+
+export interface RadarSubscribeRequest extends RadarWebsocketRequest {
+  type: WebsocketRequestType.SUBSCRIBE;
   requestId?: number;
+}
+
+export interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
+  type: WebsocketRequestType.UNSUBSCRIBE;
 }
 
 export interface RadarNewOrder extends RadarEvent {
