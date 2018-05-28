@@ -161,17 +161,19 @@ export interface RadarFill extends RadarEvent {
 
 export interface RadarWebsocketRequest {
   type: WebsocketRequestType;
-  topic: WebsocketRequestTopic;
-  market: string;
+  requestId?: number;
 }
 
 export interface RadarSubscribeRequest extends RadarWebsocketRequest {
   type: WebsocketRequestType.SUBSCRIBE;
-  requestId?: number;
+  topic: WebsocketRequestTopic;
+  market: string;
 }
 
 export interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
   type: WebsocketRequestType.UNSUBSCRIBE;
+  topic: WebsocketRequestTopic;
+  market: string;
 }
 
 export interface RadarNewOrder extends RadarEvent {
