@@ -145,6 +145,21 @@ export interface RadarEvent {
   order: RadarSignedOrder;
 }
 
+export interface RadarNewOrder extends RadarEvent {
+}
+
+export interface RadarCancelOrder extends RadarEvent {
+}
+
+export interface RadarRemoveOrder extends RadarEvent {
+  reason: string;
+}
+
+export interface WebsocketEvent {
+  action: WebsocketAction; 
+  event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
+}
+
 export interface RadarFill extends RadarEvent {
   transactionHash: string;
   blockNumber: number;
@@ -174,19 +189,4 @@ export interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
   type: WebsocketRequestType.UNSUBSCRIBE;
   topic: WebsocketRequestTopic;
   market: string;
-}
-
-export interface RadarNewOrder extends RadarEvent {
-}
-
-export interface RadarCancelOrder extends RadarEvent {
-}
-
-export interface RadarRemoveOrder extends RadarEvent {
-  reason: string;
-}
-
-export interface WebsocketEvent {
-  action: WebsocketAction; 
-  event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
 }
