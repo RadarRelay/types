@@ -18,12 +18,6 @@ var RadarOrderState;
     RadarOrderState["EXPIRED"] = "EXPIRED";
     RadarOrderState["UNFUNDED"] = "UNFUNDED";
 })(RadarOrderState = exports.RadarOrderState || (exports.RadarOrderState = {}));
-var RadarSubscriptionType;
-(function (RadarSubscriptionType) {
-    RadarSubscriptionType["BOOK"] = "BOOK";
-    RadarSubscriptionType["TICKER"] = "TICKER";
-    RadarSubscriptionType["CANDLE"] = "CANDLE";
-})(RadarSubscriptionType = exports.RadarSubscriptionType || (exports.RadarSubscriptionType = {}));
 var WebsocketAction;
 (function (WebsocketAction) {
     WebsocketAction["FILL"] = "FILL";
@@ -31,3 +25,14 @@ var WebsocketAction;
     WebsocketAction["CANCEL"] = "CANCEL";
     WebsocketAction["REMOVE"] = "REMOVE";
 })(WebsocketAction = exports.WebsocketAction || (exports.WebsocketAction = {}));
+var WebsocketRequestTopic;
+(function (WebsocketRequestTopic) {
+    WebsocketRequestTopic["BOOK"] = "BOOK";
+    WebsocketRequestTopic["TICKER"] = "TICKER";
+    WebsocketRequestTopic["CANDLE"] = "CANDLE";
+})(WebsocketRequestTopic = exports.WebsocketRequestTopic || (exports.WebsocketRequestTopic = {}));
+var WebsocketRequestType;
+(function (WebsocketRequestType) {
+    WebsocketRequestType["SUBSCRIBE"] = "SUBSCRIBE";
+    WebsocketRequestType["UNSUBSCRIBE"] = "UNSUBSCRIBE";
+})(WebsocketRequestType = exports.WebsocketRequestType || (exports.WebsocketRequestType = {}));

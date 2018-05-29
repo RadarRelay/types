@@ -15,15 +15,10 @@ export enum RadarOrderType {
 
 export enum RadarOrderState {
   OPEN = 'OPEN',
+  FILLED = 'FILLED',
+  CANCELED = 'CANCELED',
   EXPIRED = 'EXPIRED',
-  CLOSED = 'CLOSED',
   UNFUNDED = 'UNFUNDED'
-}
-
-export enum RadarSubscriptionType {
-  BOOK = 'BOOK',
-  TICKER = 'TICKER',
-  CANDLE = 'CANDLE'
 }
 
 export enum WebsocketAction {
@@ -31,6 +26,17 @@ export enum WebsocketAction {
   NEW = 'NEW',
   CANCEL = 'CANCEL',
   REMOVE = 'REMOVE'
+}
+
+export enum WebsocketRequestTopic {
+  BOOK = 'BOOK',
+  TICKER = 'TICKER',
+  CANDLE = 'CANDLE'
+}
+
+export enum WebsocketRequestType {
+  SUBSCRIBE = 'SUBSCRIBE',
+  UNSUBSCRIBE = 'UNSUBSCRIBE'
 }
 ```
 
@@ -185,6 +191,14 @@ interface RadarRemoveOrder extends RadarEvent {
 }
 ```
 
+### WebsocketEvent
+```javascript
+interface WebsocketEvent {
+  action: WebsocketAction;
+  event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
+}
+```
+
 ### RadarFill
 ```javascript
 interface RadarFill extends RadarEvent {
@@ -202,19 +216,31 @@ interface RadarFill extends RadarEvent {
 }
 ```
 
-### RadarSubscribeMessage
+## Radar Websocket Request Types
+Radar Request Types utilized by the Websocket Endpoint.
+
+### RadarWebsocketRequest
 ```javascript
-export interface RadarSubscribeMessage {
-  type: RadarSubscriptionType;
-  market: string;
+export interface RadarWebsocketRequest {
+  type: WebsocketRequestType;
   requestId?: number;
 }
 ```
 
-### WebsocketEvent
+### RadarSubscribeRequest
 ```javascript
-interface WebsocketEvent {
-  action: WebsocketAction;
-  event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
+export interface RadarSubscribeRequest extends RadarWebsocketRequest {
+  type: WebsocketRequestType.SUBSCRIBE;
+  topic: WebsocketRequestTopic;
+  market: string;
+}
+```
+
+### RadarUnsubscribeRequest
+```javascript
+export interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
+  type: WebsocketRequestType.UNSUBSCRIBE;
+  topic: WebsocketRequestTopic;
+  market: string;
 }
 ```

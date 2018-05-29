@@ -16,16 +16,20 @@ export declare enum RadarOrderState {
     EXPIRED = "EXPIRED",
     UNFUNDED = "UNFUNDED",
 }
-export declare enum RadarSubscriptionType {
-    BOOK = "BOOK",
-    TICKER = "TICKER",
-    CANDLE = "CANDLE",
-}
 export declare enum WebsocketAction {
     FILL = "FILL",
     NEW = "NEW",
     CANCEL = "CANCEL",
     REMOVE = "REMOVE",
+}
+export declare enum WebsocketRequestTopic {
+    BOOK = "BOOK",
+    TICKER = "TICKER",
+    CANDLE = "CANDLE",
+}
+export declare enum WebsocketRequestType {
+    SUBSCRIBE = "SUBSCRIBE",
+    UNSUBSCRIBE = "UNSUBSCRIBE",
 }
 export interface RadarToken {
     ID: number;
@@ -120,6 +124,17 @@ export interface RadarEvent {
     quoteTokenAddress: string;
     order: RadarSignedOrder;
 }
+export interface RadarNewOrder extends RadarEvent {
+}
+export interface RadarCancelOrder extends RadarEvent {
+}
+export interface RadarRemoveOrder extends RadarEvent {
+    reason: string;
+}
+export interface WebsocketEvent {
+    action: WebsocketAction;
+    event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
+}
 export interface RadarFill extends RadarEvent {
     transactionHash: string;
     blockNumber: number;
@@ -133,19 +148,17 @@ export interface RadarFill extends RadarEvent {
     orderHash: string;
     timestamp: number;
 }
-export interface RadarSubscribeMessage {
-    type: RadarSubscriptionType;
-    market: string;
+export interface RadarWebsocketRequest {
+    type: WebsocketRequestType;
     requestId?: number;
 }
-export interface RadarNewOrder extends RadarEvent {
+export interface RadarSubscribeRequest extends RadarWebsocketRequest {
+    type: WebsocketRequestType.SUBSCRIBE;
+    topic: WebsocketRequestTopic;
+    market: string;
 }
-export interface RadarCancelOrder extends RadarEvent {
-}
-export interface RadarRemoveOrder extends RadarEvent {
-    reason: string;
-}
-export interface WebsocketEvent {
-    action: WebsocketAction;
-    event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
+export interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
+    type: WebsocketRequestType.UNSUBSCRIBE;
+    topic: WebsocketRequestTopic;
+    market: string;
 }
