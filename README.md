@@ -244,3 +244,11 @@ export interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
   market: string;
 }
 ```
+
+### RadarWebsocketResponse
+```javascript
+export interface RadarWebsocketResponse {
+  type: WebsocketRequestType | 'ERROR';
+  requestId?: number;
+}
+```
