@@ -245,6 +245,9 @@ export interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
 }
 ```
 
+## Radar Websocket Response Types
+Radar Response Types utilized by the Websocket Endpoint.
+
 ### RadarWebsocketResponse
 ```javascript
 export interface RadarWebsocketResponse {
