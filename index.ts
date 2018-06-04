@@ -60,7 +60,7 @@ export interface RadarMarket {
   displayName: string; // "ZRX/WETH",
   minOrderSize: BigNumber; // calculated min quote size based on last trade price
   maxOrderSize: BigNumber; // calculated max quote size based on last trade price
-  price: BigNumber; // last trade price
+  lastTradePrice: BigNumber; // last trade price
 }
 
 export interface RadarSignedOrder {
