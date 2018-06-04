@@ -38,6 +38,9 @@ export enum WebsocketRequestType {
   UNSUBSCRIBE = 'UNSUBSCRIBE'
 }
 
+/**
+ * Information specific to a single token.
+ */
 export interface RadarToken {
   ID: number;
   address: string;
@@ -50,6 +53,9 @@ export interface RadarToken {
   quote: boolean;
 }
 
+/**
+ * Market information for a base/quote token pair.
+ */
 export interface RadarMarket {
   id: string; // "ZRX-WETH",
   baseTokenAddress: string;
@@ -58,11 +64,14 @@ export interface RadarMarket {
   quoteTokenDecimals: number;
   quoteIncrement: BigNumber; // analogous to the current "precision"
   displayName: string; // "ZRX/WETH",
-  minOrderSize: BigNumber; // calculated min quote size based on last trade price
-  maxOrderSize: BigNumber; // calculated max quote size based on last trade price
+  minOrderSize: BigNumber; // calculated min base token size based on last trade price
+  maxOrderSize: BigNumber; // calculated max base token based on last trade price
   lastTradePrice: BigNumber; // last trade price
 }
 
+/**
+ * ZRX Signed Order with included order state.
+ */
 export interface RadarSignedOrder {
   orderHash: string;
   type: RadarOrderType;
@@ -76,6 +85,9 @@ export interface RadarSignedOrder {
   signedOrder: SignedOrder;
 }
 
+/**
+ * A request for an unsigned order at the specified quantity and price, which can then we signed and POSTed back.
+ */
 export interface RadarLimitOrder {
   type: UserOrderType;
   quantity: BigNumber;
@@ -83,11 +95,17 @@ export interface RadarLimitOrder {
   expiration: BigNumber;
 }
 
+/**
+ * A request for fillable orders, up to the specified quantity, at the best price.
+ */
 export interface RadarMarketOrder {
   type: UserOrderType;
   quantity: BigNumber;
 }
 
+/**
+ * A response with price information and fillable orders at the best price.
+ */
 export interface RadarMarketOrderResponse {
   averagePrice: BigNumber;
   bestPrice: BigNumber;
@@ -96,6 +114,9 @@ export interface RadarMarketOrderResponse {
   orders: SignedOrder[];
 }
 
+/**
+ * Fee information for a given market.
+ */
 export interface RadarOrderFeeResponse {
   makerFee: BigNumber;
   takerFee: BigNumber;
@@ -103,6 +124,9 @@ export interface RadarOrderFeeResponse {
   gasEstimate?: BigNumber;
 }
 
+/**
+ * Price, volume, and related information for a given market.
+ */
 export interface RadarTicker {
   transactionHash: string; // last trade tx hash
   price: BigNumber; // last trade price
@@ -113,6 +137,9 @@ export interface RadarTicker {
   timestamp: BigNumber; // last trade time in unix time (seconds)
 }
 
+/**
+ * The orderbook for a given market.
+ */
 export interface RadarBook {
   baseTokenAddress: string;
   quoteTokenAddress: string;
@@ -120,7 +147,9 @@ export interface RadarBook {
   asks: RadarSignedOrder[];
 }
 
-// Radar Candle
+/**
+ * Open-high-low-close chart data.
+ */
 export interface Ohlc {
   open: BigNumber;
   high: BigNumber;
@@ -139,28 +168,45 @@ export interface RadarCandle extends Ohlc {
   quoteTokenVolume: BigNumber;
 }
 
-// Radar Events utilized by the Websocket Endpoint
+/**
+ * Radar Events utilized by the Websocket Endpoint.
+ */
 export interface RadarEvent {
   baseTokenAddress: string;
   quoteTokenAddress: string;
   order: RadarSignedOrder;
 }
 
+/**
+ * New Order Event
+ */
 export interface RadarNewOrder extends RadarEvent {
 }
 
+/**
+ * Canceled Order Event
+ */
 export interface RadarCancelOrder extends RadarEvent {
 }
 
+/**
+ * Remove Order Event
+ */
 export interface RadarRemoveOrder extends RadarEvent {
   reason: string;
 }
 
+/**
+ * WebSocket Event
+ */
 export interface WebsocketEvent {
   action: WebsocketAction; 
   event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
 }
 
+/**
+ * Fill Event
+ */
 export interface RadarFill extends RadarEvent {
   transactionHash: string;
   blockNumber: number;
@@ -175,23 +221,35 @@ export interface RadarFill extends RadarEvent {
   timestamp: number;
 }
 
+/**
+ * WebSocket Request
+ */
 export interface RadarWebsocketRequest {
   type: WebsocketRequestType;
   requestId?: number;
 }
 
+/**
+ * WebSocket Subscribe Request
+ */
 export interface RadarSubscribeRequest extends RadarWebsocketRequest {
   type: WebsocketRequestType.SUBSCRIBE;
   topic: WebsocketRequestTopic;
   market: string;
 }
 
+/**
+ * WebSocket Unsubscribe Request
+ */
 export interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
   type: WebsocketRequestType.UNSUBSCRIBE;
   topic: WebsocketRequestTopic;
   market: string;
 }
 
+/**
+ * WebSocket Response
+ */
 export interface RadarWebsocketResponse {
   type: WebsocketRequestType | 'ERROR';
   requestId?: number;
