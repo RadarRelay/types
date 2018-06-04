@@ -58,8 +58,9 @@ export interface RadarMarket {
   quoteTokenDecimals: number;
   quoteIncrement: BigNumber; // analogous to the current "precision"
   displayName: string; // "ZRX/WETH",
-  minOrderSize: BigNumber; // calculated min quote size based on current market rate
-  maxOrderSize: BigNumber; // calculated max quote size based on current market rate
+  minOrderSize: BigNumber; // calculated min quote size based on last trade price
+  maxOrderSize: BigNumber; // calculated max quote size based on last trade price
+  price: BigNumber; // last trade price
 }
 
 export interface RadarSignedOrder {
