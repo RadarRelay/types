@@ -42,6 +42,8 @@ export enum WebsocketRequestType {
 
 ## Interfaces
 ### RadarToken
+Information specific to a single token.
+
 ```javascript
 interface RadarToken {
   address: string;
@@ -56,6 +58,8 @@ interface RadarToken {
 ```
 
 ### RadarMarket
+Market information for a base/quote token pair.
+
 ```javascript
 interface RadarMarket {
   id: string; // "ZRX-WETH",
@@ -65,8 +69,9 @@ interface RadarMarket {
   quoteTokenDecimals: number;
   quoteIncrement: BigNumber; // analogous to the current "precision"
   displayName: string; // "ZRX/WETH",
-  minOrderSize: BigNumber; // calculated min quote size based on current market rate
-  maxOrderSize: BigNumber; // calculated max quote size based on current market rate
+  minOrderSize: BigNumber; // calculated min base token size based on last trade price
+  maxOrderSize: BigNumber; // calculated max base token size based on last trade price
+  lastTradePrice: BigNumber; // last trade price
 }
 ```
 
@@ -89,6 +94,8 @@ interface RadarSignedOrder {
 ```
 
 ### RadarLimitOrderRequest
+A request for an unsigned order at the specified quantity and price, which can then we signed and POSTed back.
+
 ```javascript
 interface RadarLimitOrder {
   type: UserOrderType;
@@ -98,6 +105,8 @@ interface RadarLimitOrder {
 ```
 
 ### RadarMarketOrderRequest
+A request for fillable orders, up to the specified quantity, at the best price.
+
 ```javascript
 interface RadarMarketOrder {
   type: UserOrderType;
@@ -106,6 +115,8 @@ interface RadarMarketOrder {
 ```
 
 ### RadarMarketOrderResponse
+A response with price information and fillable orders at the best price.
+
 ```javascript
 interface RadarMarketOrderResponse {
    averagePrice: BigNumber;
@@ -117,6 +128,8 @@ interface RadarMarketOrderResponse {
 ```
 
 ### RadarOrderFeeResponse
+Fee information for a given market.
+
 ```javascript
 interface RadarOrderFeeResponse {
   makerFee: BigNumber;
@@ -127,6 +140,8 @@ interface RadarOrderFeeResponse {
 ```
 
 ### RadarTicker
+Price, volume, and related information for a given market.
+
 ```javascript
 interface RadarTicker {
   transactionHash: string; // last trade tx hash
@@ -140,6 +155,8 @@ interface RadarTicker {
 ```
 
 ### RadarBook
+The orderbook for a given market.
+
 ```javascript
 interface RadarBook {
   baseTokenAddress: string;
@@ -150,6 +167,8 @@ interface RadarBook {
 ```
 
 ### Radar Candle
+Open-high-low-close chart data.
+
 ```javascript
 interface Ohlc {
   open: BigNumber;
