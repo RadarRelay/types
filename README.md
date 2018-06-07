@@ -2,6 +2,8 @@
 
 Custom type definitions used by the Radar API and SDK
 
+[![npm version](https://badge.fury.io/js/%40radarrelay%2Ftypes.svg)](https://badge.fury.io/js/%40radarrelay%2Ftypes)
+
 ## Enums
 
 ```javascript
