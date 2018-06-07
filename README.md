@@ -280,8 +280,8 @@ export interface RadarWebsocketResponse {
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/RadarRelay/radar-types/blob/master/CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+Please read [CONTRIBUTING.md](https://github.com/RadarRelay/types/blob/master/CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/RadarRelay/radar-types/blob/master/LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/RadarRelay/types/blob/master/LICENSE.md) file for details.
