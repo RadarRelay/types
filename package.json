@@ -1,7 +1,7 @@
 {
-  "name": "radar-types",
-  "version": "0.7.3",
-  "description": "Types used by the Radar Relay API",
+  "name": "@radarrelay/types",
+  "version": "0.1.0",
+  "description": "Custom type definitions used by the Radar API and SDK",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Radar Relay<dev@radarrelay.com>",
@@ -13,5 +13,10 @@
   "dependencies": {
     "bignumber.js": "^5.0.0",
     "@0xproject/types": "^0.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RadarRelay/types.git"
+  },
+  "homepage": "https://github.com/RadarRelay/types#readme"
 }

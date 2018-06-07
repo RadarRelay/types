@@ -1,8 +1,6 @@
-# radar-types
+# types
 
 Custom type definitions used by the Radar API and SDK
-
-[![npm version](https://badge.fury.io/js/radar-types.svg)](https://badge.fury.io/js/radar-types)
 
 ## Enums
 
