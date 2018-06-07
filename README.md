@@ -1,7 +1,11 @@
 # radar-types
+
 Custom type definitions used by the Radar API and SDK
 
+[![npm version](https://badge.fury.io/js/radar-types.svg)](https://badge.fury.io/js/radar-types)
+
 ## Enums
+
 ```javascript
 export enum UserOrderType {
   BUY = 'BUY',
@@ -41,6 +45,7 @@ export enum WebsocketRequestType {
 ```
 
 ## Interfaces
+
 ### RadarToken
 Information specific to a single token.
 
@@ -274,3 +279,11 @@ export interface RadarWebsocketResponse {
   requestId?: number;
 }
 ```
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://github.com/RadarRelay/radar-types/blob/master/CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/RadarRelay/radar-types/blob/master/LICENSE.md) file for details.
