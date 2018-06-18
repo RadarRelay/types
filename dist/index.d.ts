@@ -85,6 +85,23 @@ export interface RadarLimitOrder {
     expiration: BigNumber;
 }
 /**
+ * An unsigned order at the specified quantity and price
+ */
+export interface UnsignedOrder {
+    maker: 'SET';
+    taker: string;
+    makerFee: BigNumber;
+    takerFee: BigNumber;
+    makerTokenAmount: BigNumber;
+    takerTokenAmount: BigNumber;
+    makerTokenAddress: string;
+    takerTokenAddress: string;
+    salt: BigNumber;
+    exchangeContractAddress: 'SET';
+    feeRecipient: string;
+    expirationUnixTimestampSec: 'SET';
+}
+/**
  * A request for fillable orders, up to the specified quantity, at the best price.
  */
 export interface RadarMarketOrder {
