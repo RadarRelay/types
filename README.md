@@ -7,17 +7,17 @@ Custom type definitions used by the Radar API and SDK
 ## Enums
 
 ```javascript
-export enum UserOrderType {
+enum UserOrderType {
   BUY = 'BUY',
   SELL = 'SELL'
 }
 
-export enum RadarOrderType {
+enum RadarOrderType {
   BID = 'BID',
   ASK = 'ASK'
 }
 
-export enum RadarOrderState {
+enum RadarOrderState {
   OPEN = 'OPEN',
   FILLED = 'FILLED',
   CANCELED = 'CANCELED',
@@ -25,20 +25,20 @@ export enum RadarOrderState {
   UNFUNDED = 'UNFUNDED'
 }
 
-export enum WebsocketAction {
+enum WebsocketAction {
   FILL = 'FILL',
   NEW = 'NEW',
   CANCEL = 'CANCEL',
   REMOVE = 'REMOVE'
 }
 
-export enum WebsocketRequestTopic {
+enum WebsocketRequestTopic {
   BOOK = 'BOOK',
   TICKER = 'TICKER',
   CANDLE = 'CANDLE'
 }
 
-export enum WebsocketRequestType {
+enum WebsocketRequestType {
   SUBSCRIBE = 'SUBSCRIBE',
   UNSUBSCRIBE = 'UNSUBSCRIBE'
 }
@@ -144,7 +144,7 @@ interface RadarLimitOrder {
 /**
  * An unsigned order at the specified quantity and price
  */
-export interface UnsignedOrder {
+interface UnsignedOrder {
   maker: 'SET';
   taker: string;
   makerFee: BigNumber;
@@ -296,7 +296,7 @@ Radar Request Types utilized by the Websocket Endpoint.
 
 ### RadarWebsocketRequest
 ```javascript
-export interface RadarWebsocketRequest {
+interface RadarWebsocketRequest {
   type: WebsocketRequestType;
   requestId?: number;
 }
@@ -304,7 +304,7 @@ export interface RadarWebsocketRequest {
 
 ### RadarSubscribeRequest
 ```javascript
-export interface RadarSubscribeRequest extends RadarWebsocketRequest {
+interface RadarSubscribeRequest extends RadarWebsocketRequest {
   type: WebsocketRequestType.SUBSCRIBE;
   topic: WebsocketRequestTopic;
   market: string;
@@ -313,7 +313,7 @@ export interface RadarSubscribeRequest extends RadarWebsocketRequest {
 
 ### RadarUnsubscribeRequest
 ```javascript
-export interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
+interface RadarUnsubscribeRequest extends RadarWebsocketRequest {
   type: WebsocketRequestType.UNSUBSCRIBE;
   topic: WebsocketRequestTopic;
   market: string;
@@ -325,7 +325,7 @@ Radar Response Types utilized by the Websocket Endpoint.
 
 ### RadarWebsocketResponse
 ```javascript
-export interface RadarWebsocketResponse {
+interface RadarWebsocketResponse {
   type: WebsocketRequestType | 'ERROR';
   requestId?: number;
 }
