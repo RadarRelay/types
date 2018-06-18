@@ -1,5 +1,5 @@
 import {BigNumber} from 'bignumber.js';
-import {SignedOrder} from '@0xproject/types';
+import {SignedOrder, Order} from '@0xproject/types';
 export {SignedOrder} from '@0xproject/types';
 
 export enum UserOrderType {
@@ -93,6 +93,24 @@ export interface RadarLimitOrder {
   quantity: BigNumber;
   price: BigNumber;
   expiration: BigNumber;
+}
+
+/**
+ * An unsigned order at the specified quantity and price
+ */
+export interface UnsignedOrder {
+  maker: 'SET';
+  taker: string;
+  makerFee: BigNumber;
+  takerFee: BigNumber;
+  makerTokenAmount: BigNumber;
+  takerTokenAmount: BigNumber;
+  makerTokenAddress: string;
+  takerTokenAddress: string;
+  salt: BigNumber;
+  exchangeContractAddress: 'SET';
+  feeRecipient: string;
+  expirationUnixTimestampSec: 'SET';
 }
 
 /**

@@ -79,6 +79,34 @@ interface RadarMarket {
   lastTradePrice: BigNumber; // last trade price
 }
 ```
+### Order
+ZeroEx Order
+
+```javascript
+interface Order {
+    maker: string;
+    taker: string;
+    makerFee: BigNumber;
+    takerFee: BigNumber;
+    makerTokenAmount: BigNumber;
+    takerTokenAmount: BigNumber;
+    makerTokenAddress: string;
+    takerTokenAddress: string;
+    salt: BigNumber;
+    exchangeContractAddress: string;
+    feeRecipient: string;
+    expirationUnixTimestampSec: BigNumber;
+}
+```
+
+### SignedOrder
+ZeroEx Signed Order
+
+```javascript
+interface SignedOrder extends Order {
+    ecSignature: ECSignature;
+}
+```
 
 ### RadarSignedOrder
 ZRX Signed Order with included order state.
@@ -106,7 +134,30 @@ interface RadarLimitOrder {
   type: UserOrderType;
   quantity: BigNumber;
   price: BigNumber;
+  expiration: BigNumber;
  }
+```
+
+### UnsignedOrder
+
+```javascript
+/**
+ * An unsigned order at the specified quantity and price
+ */
+export interface UnsignedOrder {
+  maker: 'SET';
+  taker: string;
+  makerFee: BigNumber;
+  takerFee: BigNumber;
+  makerTokenAmount: BigNumber;
+  takerTokenAmount: BigNumber;
+  makerTokenAddress: string;
+  takerTokenAddress: string;
+  salt: BigNumber;
+  exchangeContractAddress: 'SET';
+  feeRecipient: string;
+  expirationUnixTimestampSec: 'SET';
+}
 ```
 
 ### RadarMarketOrderRequest
