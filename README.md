@@ -6,17 +6,30 @@ Custom type definitions used by the Radar API and SDK
 
 ## Enums
 
+### UserOrderType
+The order type specified by the user.
+
 ```javascript
 enum UserOrderType {
   BUY = 'BUY',
   SELL = 'SELL'
 }
+```
 
+### RadarOrderType
+The order type used by Radar on the backend.
+
+```javascript
 enum RadarOrderType {
   BID = 'BID',
   ASK = 'ASK'
 }
+```
 
+### RadarOrderState
+Various order states used by Radar.
+
+```javascript
 enum RadarOrderState {
   OPEN = 'OPEN',
   FILLED = 'FILLED',
@@ -24,20 +37,35 @@ enum RadarOrderState {
   EXPIRED = 'EXPIRED',
   UNFUNDED = 'UNFUNDED'
 }
+```
 
+### WebsocketAction
+The order book WebSocket action.
+
+```javascript
 enum WebsocketAction {
   FILL = 'FILL',
   NEW = 'NEW',
   CANCEL = 'CANCEL',
   REMOVE = 'REMOVE'
 }
+```
 
+### WebsocketRequestTopic
+The WebSocket request topic.
+
+```javascript
 enum WebsocketRequestTopic {
   BOOK = 'BOOK',
   TICKER = 'TICKER',
   CANDLE = 'CANDLE'
 }
+```
 
+### WebsocketRequestType
+The type of WebSocket request.
+
+```javascript
 enum WebsocketRequestType {
   SUBSCRIBE = 'SUBSCRIBE',
   UNSUBSCRIBE = 'UNSUBSCRIBE'
@@ -139,11 +167,9 @@ interface RadarLimitOrder {
 ```
 
 ### UnsignedOrder
+An unsigned order at the specified quantity and price.
 
 ```javascript
-/**
- * An unsigned order at the specified quantity and price
- */
 interface UnsignedOrder {
   maker: 'SET';
   taker: string;
