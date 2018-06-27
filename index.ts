@@ -196,6 +196,13 @@ export interface RadarEvent {
 }
 
 /**
+ * An on-chain event (transaction)
+ */
+export interface OnChainEvent {
+  transactionHash: string;
+}
+
+/**
  * New Order Event
  */
 export interface RadarNewOrder extends RadarEvent {
@@ -204,7 +211,7 @@ export interface RadarNewOrder extends RadarEvent {
 /**
  * Canceled Order Event
  */
-export interface RadarCancelOrder extends RadarEvent {
+export interface RadarCancelOrder extends RadarEvent, OnChainEvent {
 }
 
 /**
@@ -225,8 +232,7 @@ export interface WebsocketEvent {
 /**
  * Fill Event
  */
-export interface RadarFill extends RadarEvent {
-  transactionHash: string;
+export interface RadarFill extends RadarEvent, OnChainEvent {
   blockNumber: number;
   maker: string;
   taker: string;
