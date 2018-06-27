@@ -283,10 +283,19 @@ interface RadarEvent {
 }
 ```
 
+### OnChainEvent
+An on-chain event (transaction).
+
+```javascript
+interface OnChainEvent {
+  transactionHash: string;
+}
+```
+
 ### Order Events
 ```javascript
 interface RadarNewOrder extends RadarEvent { }
-interface RadarCancelOrder extends RadarEvent { }
+interface RadarCancelOrder extends RadarEvent, OnChainEvent { }
 interface RadarRemoveOrder extends RadarEvent {
   reason: string;
 }
@@ -302,8 +311,7 @@ interface WebsocketEvent {
 
 ### RadarFill
 ```javascript
-interface RadarFill extends RadarEvent {
-  transactionHash: string;
+interface RadarFill extends RadarEvent, OnChainEvent {
   blockNumber: number;
   maker: string;
   taker: string;
