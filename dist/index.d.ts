@@ -59,6 +59,14 @@ export interface RadarMarket {
     minOrderSize: BigNumber;
     maxOrderSize: BigNumber;
     lastTradePrice: BigNumber;
+    spreadPercentage: BigNumber;
+    volume24Hour: BigNumber;
+    percentChange24Hour: BigNumber;
+    bestBid: BigNumber;
+    bestAsk: BigNumber;
+    numBidsWithinRange: number;
+    numAsksWithinRange: number;
+    score: number;
 }
 /**
  * ZRX Signed Order with included order state.
