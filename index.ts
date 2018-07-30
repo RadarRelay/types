@@ -57,16 +57,24 @@ export interface RadarToken {
  * Market information for a base/quote token pair.
  */
 export interface RadarMarket {
-  id: string; // "ZRX-WETH",
+  id: string; // Example: ZRX-WETH
   baseTokenAddress: string;
   quoteTokenAddress: string;
   baseTokenDecimals: number;
   quoteTokenDecimals: number;
-  quoteIncrement: BigNumber; // analogous to the current "precision"
-  displayName: string; // "ZRX/WETH",
-  minOrderSize: BigNumber; // calculated min base token size based on last trade price
-  maxOrderSize: BigNumber; // calculated max base token based on last trade price
-  lastTradePrice: BigNumber; // last trade price
+  quoteIncrement: BigNumber; // Maximum precision allowed for the market
+  displayName: string; // Example: ZRX/WETH
+  minOrderSize: BigNumber; // Calculated min base token size based on last trade price
+  maxOrderSize: BigNumber; // Calculated max base token size
+  lastTradePrice: BigNumber;
+  spreadPercentage: BigNumber; // The bid-ask spread percentage
+  volume24Hour: BigNumber; // 24 hour volume
+  percentChange24Hour: BigNumber; // 24 hour price change percentage
+  bestBid: BigNumber; // Best bid on the book
+  bestAsk: BigNumber; // Best ask on the book
+  numBidsWithinRange: number; // Number of bids within a defined range
+  numAsksWithinRange: number; // Number of asks within a defined range
+  score: number; // A score used to rank most active markets
 }
 
 /**
