@@ -2,16 +2,17 @@
 # yarn lockfile v1
 
 
-"@0xproject/types@^0.6.0":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@0xproject/types/-/types-0.6.3.tgz#0bc066967aad4151011b6e478bb707b1afb8504b"
+"@0xproject/types@^1.0.1-rc.3":
+  version "1.0.1-rc.3"
+  resolved "https://registry.yarnpkg.com/@0xproject/types/-/types-1.0.1-rc.3.tgz#89d2c195960b1514a855ff2a07d9ac4e1f6681d3"
   dependencies:
     "@types/node" "^8.0.53"
     bignumber.js "~4.1.0"
+    ethereum-types "^1.0.3"
 
 "@types/node@^8.0.53":
-  version "8.10.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.18.tgz#eb9ad8b0723d13fa9bc8b42543e3661ed805f2bb"
+  version "8.10.23"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.23.tgz#e5ccfdafff42af5397c29669b6d7d65f7d629a00"
 
 bignumber.js@^5.0.0:
   version "5.0.0"
@@ -20,3 +21,10 @@ bignumber.js@^5.0.0:
 bignumber.js@~4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-4.1.0.tgz#db6f14067c140bd46624815a7916c92d9b6c24b1"
+
+ethereum-types@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ethereum-types/-/ethereum-types-1.0.3.tgz#9f4e33b9954c5a237d004832a8d0cb1fb46506a1"
+  dependencies:
+    "@types/node" "^8.0.53"
+    bignumber.js "~4.1.0"

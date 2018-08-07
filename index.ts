@@ -1,6 +1,6 @@
-import {BigNumber} from 'bignumber.js';
-import {SignedOrder, Order} from '@0xproject/types';
-export {SignedOrder} from '@0xproject/types';
+import { BigNumber } from 'bignumber.js';
+import { SignedOrder } from '@0xproject/types';
+export { SignedOrder } from '@0xproject/types';
 
 export enum UserOrderType {
   BUY = 'BUY',
@@ -223,6 +223,14 @@ export interface RadarCancelOrder extends RadarEvent, OnChainEvent {
 }
 
 /**
+ * Canceled Order Event
+ */
+export interface RadarCancelUpTo {
+  makerAddress: string;
+  orderHashes: string[];
+}
+
+/**
  * Remove Order Event
  */
 export interface RadarRemoveOrder extends RadarEvent {
@@ -233,8 +241,8 @@ export interface RadarRemoveOrder extends RadarEvent {
  * WebSocket Event
  */
 export interface WebsocketEvent {
-  action: WebsocketAction; 
-  event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
+  action: WebsocketAction;
+  event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarCancelUpTo | RadarRemoveOrder;
 }
 
 /**
