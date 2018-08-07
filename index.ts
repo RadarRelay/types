@@ -223,7 +223,7 @@ export interface RadarCancelOrder extends RadarEvent, OnChainEvent {
 }
 
 /**
- * Canceled Order Event
+ * Cancel Orders Up To Event
  */
 export interface RadarCancelUpTo {
   makerAddress: string;

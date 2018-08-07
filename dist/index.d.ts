@@ -200,6 +200,13 @@ export interface RadarNewOrder extends RadarEvent {
 export interface RadarCancelOrder extends RadarEvent, OnChainEvent {
 }
 /**
+ * Cancel Orders Up To Event
+ */
+export interface RadarCancelUpTo {
+    makerAddress: string;
+    orderHashes: string[];
+}
+/**
  * Remove Order Event
  */
 export interface RadarRemoveOrder extends RadarEvent {
@@ -210,7 +217,7 @@ export interface RadarRemoveOrder extends RadarEvent {
  */
 export interface WebsocketEvent {
     action: WebsocketAction;
-    event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
+    event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarCancelUpTo | RadarRemoveOrder;
 }
 /**
  * Fill Event
