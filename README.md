@@ -303,9 +303,14 @@ interface OnChainEvent {
 ### Order Events
 ```javascript
 interface RadarNewOrder extends RadarEvent { }
-interface RadarCancelOrder extends RadarEvent, OnChainEvent { }
+
 interface RadarRemoveOrder extends RadarEvent {
   reason: string;
+}
+
+interface RadarCancelOrder extends OnChainEvent {
+  orderType: RadarOrderType;
+  orderHash: string;
 }
 ```
 

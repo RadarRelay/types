@@ -197,7 +197,9 @@ export interface RadarNewOrder extends RadarEvent {
 /**
  * Canceled Order Event
  */
-export interface RadarCancelOrder extends RadarEvent, OnChainEvent {
+export interface RadarCancelOrder extends OnChainEvent {
+    orderType: RadarOrderType;
+    orderHash: string;
 }
 /**
  * Remove Order Event

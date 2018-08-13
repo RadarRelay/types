@@ -1,6 +1,6 @@
 {
   "name": "@radarrelay/types",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "Custom type definitions used by the Radar API and SDK",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "bignumber.js": "^5.0.0",
-    "@0xproject/types": "^0.6.0"
+    "@0xproject/types": "^1.0.1-rc.3"
   },
   "repository": {
     "type": "git",
