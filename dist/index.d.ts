@@ -72,7 +72,7 @@ export interface RadarStats {
  * Historial information for a given market.
  */
 export interface RadarHistory {
-    price: BigNumber[];
+    price24Hour: BigNumber[];
 }
 /**
  * General Market Information

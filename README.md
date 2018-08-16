@@ -124,7 +124,7 @@ Historial information for a given market.
 
 ```javascript
 interface RadarHistory {
-  price: BigNumber[]; // The 24 hour price history
+  price24Hour: BigNumber[]; // The 24 hour price history
 }
 ```
 
