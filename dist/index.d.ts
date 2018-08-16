@@ -95,7 +95,7 @@ export interface RadarMarket extends Partial<RadarMarketBase> {
     id: string;
     ticker?: RadarTicker;
     stats?: RadarStats;
-    priceHistory?: RadarHistory;
+    history?: RadarHistory;
 }
 /**
  * ZRX Signed Order with included order state.
