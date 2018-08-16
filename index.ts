@@ -67,7 +67,7 @@ export interface RadarTicker {
 }
 
 /**
- * Order book depth information and 24 hour statistics.
+ * Order book depth information and 24 hour volume statistics for a given market.
  */
 export interface RadarStats {
   numBidsWithinRange: number; // Number of bids within a defined range (Example: Within 20% of the best bid)
@@ -76,6 +76,13 @@ export interface RadarStats {
   quoteTokenAvailable: BigNumber; // Amount of quote token available on the book
   volume24Hour: BigNumber; // 24 hour volume
   percentChange24Hour: BigNumber; // 24 hour price change percentage
+}
+
+/**
+ * Historial information for a given market.
+ */
+export interface RadarHistory {
+  price: BigNumber[]; // The 24 hour price history
 }
 
 /**
@@ -100,7 +107,7 @@ export interface RadarMarket extends Partial<RadarMarketBase> {
   id: string; // Example: ZRX-WETH. (Mandatory)
   ticker?: RadarTicker; // (Optional)
   stats?: RadarStats; // (Optional)
-  priceHistory?: BigNumber[]; // 24 hour price history (Optional)
+  priceHistory?: RadarHistory; // (Optional)
 }
 
 /**

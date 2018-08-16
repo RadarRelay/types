@@ -58,7 +58,7 @@ export interface RadarTicker {
     spreadPercentage: BigNumber;
 }
 /**
- * Order book depth information and 24 hour statistics.
+ * Order book depth information and 24 hour volume statistics for a given market.
  */
 export interface RadarStats {
     numBidsWithinRange: number;
@@ -67,6 +67,12 @@ export interface RadarStats {
     quoteTokenAvailable: BigNumber;
     volume24Hour: BigNumber;
     percentChange24Hour: BigNumber;
+}
+/**
+ * Historial information for a given market.
+ */
+export interface RadarHistory {
+    price: BigNumber[];
 }
 /**
  * General Market Information
@@ -89,7 +95,7 @@ export interface RadarMarket extends Partial<RadarMarketBase> {
     id: string;
     ticker?: RadarTicker;
     stats?: RadarStats;
-    priceHistory?: BigNumber[];
+    priceHistory?: RadarHistory;
 }
 /**
  * ZRX Signed Order with included order state.
