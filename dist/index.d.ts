@@ -52,7 +52,7 @@ export interface RadarTicker {
     transactionHash: string;
     price: BigNumber;
     size: BigNumber;
-    timestamp: BigNumber;
+    timestamp: number;
     bestBid: BigNumber;
     bestAsk: BigNumber;
     spreadPercentage: BigNumber;

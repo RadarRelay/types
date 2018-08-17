@@ -98,7 +98,7 @@ interface RadarTicker {
   transactionHash: string; // Last trade tx hash
   price: BigNumber; // Last trade price
   size: BigNumber; // Last trade size (in quote)
-  timestamp: BigNumber; // Timestamp of last trade
+  timestamp: number; // Timestamp of last trade
   bestBid: BigNumber; // Best bid on the book
   bestAsk: BigNumber; // Best ask on the book
   spreadPercentage: BigNumber; // The bid-ask spread percentage
