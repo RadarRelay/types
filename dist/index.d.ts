@@ -176,11 +176,16 @@ export interface RadarCandle extends Ohlc {
     quoteTokenVolume: BigNumber;
 }
 /**
- * Radar Events utilized by the Websocket Endpoint.
+ * An event tied to a market (base/quote)
  */
-export interface RadarEvent {
+export interface MarketEvent {
     baseTokenAddress: string;
     quoteTokenAddress: string;
+}
+/**
+ * An event containing a RadarSignedOrder.
+ */
+export interface OrderEvent {
     order: RadarSignedOrder;
 }
 /**
@@ -192,19 +197,19 @@ export interface OnChainEvent {
 /**
  * New Order Event
  */
-export interface RadarNewOrder extends RadarEvent {
+export interface RadarNewOrder extends MarketEvent, OrderEvent {
 }
 /**
  * Canceled Order Event
  */
-export interface RadarCancelOrder extends OnChainEvent {
+export interface RadarCancelOrder extends MarketEvent, OnChainEvent {
     orderType: RadarOrderType;
     orderHash: string;
 }
 /**
  * Remove Order Event
  */
-export interface RadarRemoveOrder extends RadarEvent {
+export interface RadarRemoveOrder extends MarketEvent {
     reason: string;
 }
 /**
@@ -217,7 +222,7 @@ export interface WebsocketEvent {
 /**
  * Fill Event
  */
-export interface RadarFill extends RadarEvent, OnChainEvent {
+export interface RadarFill extends MarketEvent, OrderEvent, OnChainEvent {
     blockNumber: number;
     maker: string;
     taker: string;
