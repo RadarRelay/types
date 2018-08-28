@@ -208,18 +208,22 @@ export interface RadarCandle extends Ohlc {
   startBlockTimestamp: number;
   endBlock: number; // the last block included in this candle (inclusive)
   endBlockTimestamp: number;
-  baseTokenAddress: string;
   baseTokenVolume: BigNumber;
-  quoteTokenAddress: string;
   quoteTokenVolume: BigNumber;
 }
 
 /**
- * Radar Events utilized by the Websocket Endpoint.
+ * An event tied to a market (base/quote)
  */
-export interface RadarEvent {
+export interface MarketEvent {
   baseTokenAddress: string;
   quoteTokenAddress: string;
+}
+
+/**
+ * An event containing a RadarSignedOrder.
+ */
+export interface OrderEvent {
   order: RadarSignedOrder;
 }
 
@@ -233,13 +237,13 @@ export interface OnChainEvent {
 /**
  * New Order Event
  */
-export interface RadarNewOrder extends RadarEvent {
+export interface RadarNewOrder extends MarketEvent, OrderEvent {
 }
 
 /**
  * Canceled Order Event
  */
-export interface RadarCancelOrder extends OnChainEvent {
+export interface RadarCancelOrder extends MarketEvent, OnChainEvent {
   orderType: RadarOrderType;
   orderHash: string;
 }
@@ -247,7 +251,7 @@ export interface RadarCancelOrder extends OnChainEvent {
 /**
  * Remove Order Event
  */
-export interface RadarRemoveOrder extends RadarEvent {
+export interface RadarRemoveOrder extends MarketEvent {
   reason: string;
 }
 
@@ -262,7 +266,8 @@ export interface WebsocketEvent {
 /**
  * Fill Event
  */
-export interface RadarFill extends RadarEvent, OnChainEvent {
+export interface RadarFill extends MarketEvent, OnChainEvent {
+  type: UserOrderType;
   blockNumber: number;
   maker: string;
   taker: string;
@@ -273,6 +278,7 @@ export interface RadarFill extends RadarEvent, OnChainEvent {
   filledQuoteTokenAmount: BigNumber; // converted
   orderHash: string;
   timestamp: number;
+  outlier: boolean; // Whether or not the fill is an outlier
 }
 
 /**
