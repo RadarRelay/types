@@ -341,6 +341,8 @@ interface RadarNewOrder extends MarketEvent, OrderEvent { }
 
 interface RadarRemoveOrder extends MarketEvent {
   reason: string;
+  orderType: RadarOrderType;
+  orderHash: string;
 }
 
 interface RadarCancelOrder extends MarketEvent, OnChainEvent {
