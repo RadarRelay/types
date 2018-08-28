@@ -1,6 +1,6 @@
 {
   "name": "@radarrelay/types",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Custom type definitions used by the Radar API and SDK",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -46,27 +46,56 @@ export interface RadarToken {
     quote: boolean;
 }
 /**
- * Market information for a base/quote token pair.
+ *  Top-Level information about the most recent trade and best bid/ask for a given market.
  */
-export interface RadarMarket {
-    id: string;
+export interface RadarTicker {
+    transactionHash: string;
+    price: BigNumber;
+    size: BigNumber;
+    timestamp: number;
+    bestBid: BigNumber;
+    bestAsk: BigNumber;
+    spreadPercentage: BigNumber;
+}
+/**
+ * Order book depth information and 24 hour volume statistics for a given market.
+ */
+export interface RadarStats {
+    numBidsWithinRange: number;
+    numAsksWithinRange: number;
+    baseTokenAvailable: BigNumber;
+    quoteTokenAvailable: BigNumber;
+    volume24Hour: BigNumber;
+    percentChange24Hour: BigNumber;
+}
+/**
+ * Historial information for a given market.
+ */
+export interface RadarHistory {
+    price24Hour: BigNumber[];
+}
+/**
+ * General Market Information
+ */
+export interface RadarMarketBase {
+    displayName: string;
     baseTokenAddress: string;
     quoteTokenAddress: string;
     baseTokenDecimals: number;
     quoteTokenDecimals: number;
-    quoteIncrement: BigNumber;
-    displayName: string;
+    quoteIncrement: number;
     minOrderSize: BigNumber;
     maxOrderSize: BigNumber;
-    lastTradePrice: BigNumber;
-    spreadPercentage: BigNumber;
-    volume24Hour: BigNumber;
-    percentChange24Hour: BigNumber;
-    bestBid: BigNumber;
-    bestAsk: BigNumber;
-    numBidsWithinRange: number;
-    numAsksWithinRange: number;
     score: number;
+}
+/**
+ * Market information for a base/quote token pair.
+ */
+export interface RadarMarket extends Partial<RadarMarketBase> {
+    id: string;
+    ticker?: RadarTicker;
+    stats?: RadarStats;
+    history?: RadarHistory;
 }
 /**
  * ZRX Signed Order with included order state.
@@ -134,18 +163,6 @@ export interface RadarOrderFeeResponse {
     takerFee: BigNumber;
     feeRecipient: string;
     gasEstimate?: BigNumber;
-}
-/**
- * Price, volume, and related information for a given market.
- */
-export interface RadarTicker {
-    transactionHash: string;
-    price: BigNumber;
-    size: BigNumber;
-    bid: BigNumber;
-    ask: BigNumber;
-    volume: BigNumber;
-    timestamp: BigNumber;
 }
 /**
  * The orderbook for a given market.
