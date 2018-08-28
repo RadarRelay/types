@@ -182,6 +182,9 @@ export interface Ohlc {
     low: BigNumber;
     close: BigNumber;
 }
+/**
+ * Radar candle chart ohlc information
+ */
 export interface RadarCandle extends Ohlc {
     startBlock: number;
     startBlockTimestamp: number;
@@ -189,6 +192,23 @@ export interface RadarCandle extends Ohlc {
     endBlockTimestamp: number;
     baseTokenVolume: BigNumber;
     quoteTokenVolume: BigNumber;
+}
+/**
+ * A fill without the RadarSignedOrder information
+ */
+export interface RadarFill extends MarketEvent, OnChainEvent {
+    type: UserOrderType;
+    blockNumber: number;
+    maker: string;
+    taker: string;
+    feeRecipient: string;
+    paidMakerFee: BigNumber;
+    paidTakerFee: BigNumber;
+    filledBaseTokenAmount: BigNumber;
+    filledQuoteTokenAmount: BigNumber;
+    orderHash: string;
+    timestamp: number;
+    outlier: boolean;
 }
 /**
  * An event tied to a market (base/quote)
@@ -230,28 +250,16 @@ export interface RadarRemoveOrder extends MarketEvent {
     orderHash: string;
 }
 /**
+ * Fill Order Event
+ */
+export interface RadarFillOrder extends RadarFill, OrderEvent {
+}
+/**
  * WebSocket Event
  */
 export interface WebsocketEvent {
     action: WebsocketAction;
-    event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
-}
-/**
- * Fill Event
- */
-export interface RadarFill extends MarketEvent, OnChainEvent {
-    type: UserOrderType;
-    blockNumber: number;
-    maker: string;
-    taker: string;
-    feeRecipient: string;
-    paidMakerFee: BigNumber;
-    paidTakerFee: BigNumber;
-    filledBaseTokenAmount: BigNumber;
-    filledQuoteTokenAmount: BigNumber;
-    orderHash: string;
-    timestamp: number;
-    outlier: boolean;
+    event: RadarFillOrder | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
 }
 /**
  * WebSocket Request

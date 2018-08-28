@@ -305,6 +305,26 @@ interface RadarCandle extends Ohlc {
 }
 ```
 
+### Radar Fill
+A fill without the RadarSignedOrder information.
+
+```javascript
+interface RadarFill extends MarketEvent, OnChainEvent {
+  type: UserOrderType;
+  blockNumber: number;
+  maker: string;
+  taker: string;
+  feeRecipient: string;
+  paidMakerFee: BigNumber; // converted
+  paidTakerFee: BigNumber; // converted
+  filledBaseTokenAmount: BigNumber; // converted
+  filledQuoteTokenAmount: BigNumber; // converted
+  orderHash: string;
+  timestamp: number;
+  outlier: boolean; // Whether or not the fill is an outlier
+}
+```
+
 ## Radar Websocket Events
 
 ### MarketEvent
@@ -349,31 +369,16 @@ interface RadarCancelOrder extends MarketEvent, OnChainEvent {
   orderType: RadarOrderType;
   orderHash: string;
 }
+
+interface RadarFillOrder extends RadarFill, OrderEvent {
+}
 ```
 
 ### WebsocketEvent
 ```javascript
 interface WebsocketEvent {
   action: WebsocketAction;
-  event: RadarFill | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
-}
-```
-
-### RadarFill
-```javascript
-interface RadarFill extends MarketEvent, OnChainEvent {
-  type: UserOrderType;
-  blockNumber: number;
-  maker: string;
-  taker: string;
-  feeRecipient: string;
-  paidMakerFee: BigNumber; // converted
-  paidTakerFee: BigNumber; // converted
-  filledBaseTokenAmount: BigNumber; // converted
-  filledQuoteTokenAmount: BigNumber; // converted
-  orderHash: string;
-  timestamp: number;
-  outlier: boolean; // Whether or not the fill is an outlier
+  event: RadarFillOrder | RadarNewOrder | RadarCancelOrder | RadarRemoveOrder;
 }
 ```
 
