@@ -208,9 +208,7 @@ export interface RadarCandle extends Ohlc {
   startBlockTimestamp: number;
   endBlock: number; // the last block included in this candle (inclusive)
   endBlockTimestamp: number;
-  baseTokenAddress: string;
   baseTokenVolume: BigNumber;
-  quoteTokenAddress: string;
   quoteTokenVolume: BigNumber;
 }
 
@@ -268,7 +266,8 @@ export interface WebsocketEvent {
 /**
  * Fill Event
  */
-export interface RadarFill extends MarketEvent, OrderEvent, OnChainEvent {
+export interface RadarFill extends MarketEvent, OnChainEvent {
+  type: UserOrderType;
   blockNumber: number;
   maker: string;
   taker: string;
