@@ -249,6 +249,7 @@ export interface RadarFill extends MarketEvent, OnChainEvent {
     filledQuoteTokenAmount: BigNumber;
     orderHash: string;
     timestamp: number;
+    outlier: boolean;
 }
 /**
  * WebSocket Request

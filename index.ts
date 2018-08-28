@@ -278,6 +278,7 @@ export interface RadarFill extends MarketEvent, OnChainEvent {
   filledQuoteTokenAmount: BigNumber; // converted
   orderHash: string;
   timestamp: number;
+  outlier: boolean; // Whether or not the fill is an outlier
 }
 
 /**
