@@ -135,7 +135,7 @@ export interface UnsignedOrder {
     makerAssetData: string;
     takerAssetData: string;
     salt: BigNumber;
-    exchangeAddress: 'SET';
+    exchangeAddress: string;
     feeRecipientAddress: string;
     expirationTimeSeconds: BigNumber;
     signature: 'SET';
