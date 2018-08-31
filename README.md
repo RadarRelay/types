@@ -222,18 +222,20 @@ An unsigned order at the specified quantity and price.
 
 ```javascript
 interface UnsignedOrder {
-  maker: 'SET';
-  taker: string;
+  senderAddress: 'SET';
+  makerAddress: 'SET';
+  takerAddress: string;
   makerFee: BigNumber;
   takerFee: BigNumber;
-  makerTokenAmount: BigNumber;
-  takerTokenAmount: BigNumber;
-  makerTokenAddress: string;
-  takerTokenAddress: string;
+  makerAssetAmount: BigNumber;
+  takerAssetAmount: BigNumber;
+  makerAssetData: string;
+  takerAssetData: string;
   salt: BigNumber;
-  exchangeContractAddress: 'SET';
-  feeRecipient: string;
-  expirationUnixTimestampSec: 'SET';
+  exchangeAddress: string;
+  feeRecipientAddress: string;
+  expirationTimeSeconds: BigNumber;
+  signature: 'SET';
 }
 ```
 
@@ -267,7 +269,7 @@ Fee information for a given market.
 interface RadarOrderFeeResponse {
   makerFee: BigNumber;
   takerFee: BigNumber;
-  feeRecipient: string;
+  feeRecipientAddress: string;
   gasEstimate?: BigNumber;
  }
 ```
@@ -312,11 +314,11 @@ A fill without the RadarSignedOrder information.
 interface RadarFill extends MarketEvent, OnChainEvent {
   type: UserOrderType;
   blockNumber: number;
-  maker: string;
-  taker: string;
-  feeRecipient: string;
-  paidMakerFee: BigNumber; // converted
-  paidTakerFee: BigNumber; // converted
+  makerAddress: string;
+  takerAddress: string;
+  feeRecipientAddress: string;
+  makerFeePaid: BigNumber; // converted
+  takerFeePaid: BigNumber; // converted
   filledBaseTokenAmount: BigNumber; // converted
   filledQuoteTokenAmount: BigNumber; // converted
   orderHash: string;
