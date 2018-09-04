@@ -140,7 +140,7 @@ export interface RadarLimitOrder {
  * An unsigned order at the specified quantity and price
  */
 export interface UnsignedOrder {
-  senderAddress: 'SET';
+  senderAddress: string;
   makerAddress: 'SET';
   takerAddress: string;
   makerFee: BigNumber;
