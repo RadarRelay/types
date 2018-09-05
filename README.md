@@ -149,7 +149,7 @@ interface RadarMarketBase {
 Market information for a base/quote token pair.
 
 ```javascript
-interface RadarMarket {
+interface RadarMarket extends Partial<RadarMarketBase> {
   id: string; // Example: ZRX-WETH. (Mandatory)
   ticker?: RadarTicker; // (Optional)
   stats?: RadarStats; // (Optional)
