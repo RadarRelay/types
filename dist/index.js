@@ -14,7 +14,7 @@ var RadarOrderState;
 (function (RadarOrderState) {
     RadarOrderState["OPEN"] = "OPEN";
     RadarOrderState["FILLED"] = "FILLED";
-    RadarOrderState["CANCELED"] = "CANCELED";
+    RadarOrderState["CANCELLED"] = "CANCELLED";
     RadarOrderState["EXPIRED"] = "EXPIRED";
     RadarOrderState["UNFUNDED"] = "UNFUNDED";
 })(RadarOrderState = exports.RadarOrderState || (exports.RadarOrderState = {}));
