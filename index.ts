@@ -15,7 +15,7 @@ export enum RadarOrderType {
 export enum RadarOrderState {
   OPEN = 'OPEN',
   FILLED = 'FILLED',
-  CANCELED = 'CANCELED',
+  CANCELLED = 'CANCELLED',
   EXPIRED = 'EXPIRED',
   UNFUNDED = 'UNFUNDED'
 }
@@ -264,7 +264,7 @@ export interface RadarNewOrder extends MarketEvent, OrderEvent {
 }
 
 /**
- * Canceled Order Event
+ * Cancelled Order Event
  */
 export interface RadarCancelOrder extends MarketEvent, OnChainEvent {
   orderType: RadarOrderType;

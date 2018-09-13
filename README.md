@@ -33,7 +33,7 @@ Various order states used by Radar.
 enum RadarOrderState {
   OPEN = 'OPEN',
   FILLED = 'FILLED',
-  CANCELED = 'CANCELED',
+  CANCELLED = 'CANCELLED',
   EXPIRED = 'EXPIRED',
   UNFUNDED = 'UNFUNDED'
 }
