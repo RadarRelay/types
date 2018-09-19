@@ -42,7 +42,6 @@ export enum WebsocketRequestType {
  * Information specific to a single token.
  */
 export interface RadarToken {
-  ID: number;
   address: string;
   symbol: string;
   name: string;
