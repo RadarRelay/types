@@ -3,39 +3,38 @@ import { SignedOrder } from '@0xproject/types';
 export { SignedOrder } from '@0xproject/types';
 export declare enum UserOrderType {
     BUY = "BUY",
-    SELL = "SELL",
+    SELL = "SELL"
 }
 export declare enum RadarOrderType {
     BID = "BID",
-    ASK = "ASK",
+    ASK = "ASK"
 }
 export declare enum RadarOrderState {
     OPEN = "OPEN",
     FILLED = "FILLED",
     CANCELLED = "CANCELLED",
     EXPIRED = "EXPIRED",
-    UNFUNDED = "UNFUNDED",
+    UNFUNDED = "UNFUNDED"
 }
 export declare enum WebsocketAction {
     FILL = "FILL",
     NEW = "NEW",
     CANCEL = "CANCEL",
-    REMOVE = "REMOVE",
+    REMOVE = "REMOVE"
 }
 export declare enum WebsocketRequestTopic {
     BOOK = "BOOK",
     TICKER = "TICKER",
-    CANDLE = "CANDLE",
+    CANDLE = "CANDLE"
 }
 export declare enum WebsocketRequestType {
     SUBSCRIBE = "SUBSCRIBE",
-    UNSUBSCRIBE = "UNSUBSCRIBE",
+    UNSUBSCRIBE = "UNSUBSCRIBE"
 }
 /**
  * Information specific to a single token.
  */
 export interface RadarToken {
-    ID: number;
     address: string;
     symbol: string;
     name: string;
