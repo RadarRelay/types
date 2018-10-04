@@ -8,7 +8,9 @@
   "outDir": "dist",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"No Tests Defined\" && exit 0"
+    "test": "echo \"No Tests Defined\" && exit 0",
+    "lint": "tslint -c tslint.json '*.ts' 'dist/*.ts' --force",
+    "ci-publish": "ci-publish"
   },
   "dependencies": {
     "bignumber.js": "^5.0.0",
