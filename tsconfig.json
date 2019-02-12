@@ -1,16 +1,13 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
+    "lib": ["es2018", "dom"],
+    "module": "es2015",
+    "esModuleInterop": true,
+    "target": "es5",
     "outDir": "dist",
-    "experimentalDecorators": true,
-    "declaration": true,
-    "lib": [
-      "es6"
-    ]
+    "declaration": true
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": [
+    "src/**/*"
+  ],
 }

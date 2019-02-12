@@ -2,3 +2,5 @@ node_modules
 .DS_Store
 .npmrc
 package-lock.json
+dist
+.rts2_cache_*

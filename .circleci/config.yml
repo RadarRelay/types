@@ -4,21 +4,21 @@ aliases:
 
 jobs:
   lint:
-    docker: 
+    docker:
     - image: circleci/node:8.11
     steps:
     - checkout
-    - run: npm install tslint typescript
+    - run: npm install
     - run: npm run lint
   test:
-    docker: 
+    docker:
     - image: circleci/node:8.11
     steps:
     - checkout
     - run: npm install
     - run: npm run test
   publish:
-    docker: 
+    docker:
     - image: circleci/node:8.11
     steps:
     - checkout

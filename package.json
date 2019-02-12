@@ -1,24 +1,38 @@
 {
-  "name": "@radarrelay/types",
-  "version": "1.2.1",
-  "description": "Custom type definitions used by the Radar API and SDK",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "author": "Radar Relay<dev@radarrelay.com>",
-  "outDir": "dist",
-  "scripts": {
-    "build": "tsc",
-    "test": "echo \"No Tests Defined\" && exit 0",
-    "lint": "tslint -c tslint.json '*.ts' 'dist/*.ts' --force",
-    "ci-publish": "ci-publish"
-  },
-  "dependencies": {
-    "bignumber.js": "^5.0.0",
-    "@0xproject/types": "^1.0.1-rc.3"
-  },
+  "name": "@radar/relay-types",
+  "version": "2.0.0-alpha.1",
+  "description": "TypeScript type definitions for the Radar Relay API and SDK.",
+  "author": "RadarTech",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RadarRelay/types.git"
+    "url": "git+https://github.com/RadarTech/types.git"
   },
-  "homepage": "https://github.com/RadarRelay/types#readme"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "npm-run-all -s clean:dist compile-watch",
+    "build": "npm-run-all -s clean:dist compile",
+    "compile": "microbundle build src/index.ts -f cjs",
+    "compile-watch": "microbundle watch src/index.ts -f cjs",
+    "clean": "npm-run-all -s clean:*",
+    "clean:dist": "rimraf dist",
+    "clean:cache": "rimraf .rts2_cache_* .cache",
+    "test": "echo \"No Tests Defined\" && exit 0",
+    "lint": "tslint --fix --project .",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@0x/types": "^2.0.2",
+    "@0x/utils": "4.1.0"
+  },
+  "devDependencies": {
+    "@radar/tslint-config": "^5.0.1",
+    "@types/node": "^11.9.1",
+    "microbundle": "^0.9.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.14.0",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
+  }
 }
