@@ -17,6 +17,8 @@
     "clean": "npm-run-all -s clean:*",
     "clean:dist": "rimraf dist",
     "clean:cache": "rimraf .rts2_cache_* .cache",
+    "test": "echo \"No Tests Defined\" && exit 0",
+    "lint": "tslint --fix --project .",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
