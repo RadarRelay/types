@@ -1,35 +1,28 @@
 {
   "name": "@radar/relay-types",
-  "version": "2.0.0-alpha.1",
+  "version": "3.0.0-beta",
   "description": "TypeScript type definitions for the Radar Relay API and SDK.",
   "author": "RadarTech",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RadarTech/types.git"
+    "url": "git+https://github.com/RadarTech/relay-types.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "npm-run-all -s clean:dist compile-watch",
-    "build": "npm-run-all -s clean:dist compile",
-    "compile": "microbundle build src/index.ts -f cjs",
-    "compile-watch": "microbundle watch src/index.ts -f cjs",
-    "clean": "npm-run-all -s clean:*",
-    "clean:dist": "rimraf dist",
-    "clean:cache": "rimraf .rts2_cache_* .cache",
+    "build": "tsc -p .",
+    "clean": "rimraf dist",
     "test": "echo \"No Tests Defined\" && exit 0",
     "lint": "tslint --fix --project .",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@0x/types": "^2.0.2",
-    "@0x/utils": "4.1.0"
+    "@0x/types": "^2.5.0-beta.2",
+    "@0x/utils": "^4.6.0-beta.2"
   },
   "devDependencies": {
     "@radar/tslint-config": "^5.0.1",
     "@types/node": "^11.9.1",
-    "microbundle": "^0.9.0",
-    "npm-run-all": "^4.1.5",
     "prettier": "^1.14.0",
     "rimraf": "^2.6.3",
     "tslint": "^5.11.0",

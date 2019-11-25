@@ -1,5 +1,5 @@
-import { RadarSignedOrder, UserOrderType, RadarOrderType } from "./objects";
-import { BigNumber } from "@0x/utils";
+import { BigNumber } from '@0x/utils';
+import { RadarOrderType, RadarSignedOrder, UserOrderType } from './objects';
 
 // --- Enums ---------------------------------------------------------------- //
 
@@ -7,18 +7,18 @@ export enum WebsocketAction {
   FILL = 'FILL',
   NEW = 'NEW',
   CANCEL = 'CANCEL',
-  REMOVE = 'REMOVE'
+  REMOVE = 'REMOVE',
 }
 
 export enum WebsocketRequestTopic {
   BOOK = 'BOOK',
   TICKER = 'TICKER',
-  CANDLE = 'CANDLE'
+  CANDLE = 'CANDLE',
 }
 
 export enum WebsocketRequestType {
   SUBSCRIBE = 'SUBSCRIBE',
-  UNSUBSCRIBE = 'UNSUBSCRIBE'
+  UNSUBSCRIBE = 'UNSUBSCRIBE',
 }
 
 // --- Interfaces ----------------------------------------------------------- //
@@ -34,6 +34,8 @@ export interface RadarFill extends MarketEvent, OnChainEvent {
   feeRecipientAddress: string;
   makerFeePaid: BigNumber; // converted
   takerFeePaid: BigNumber; // converted
+  makerFeeTokenAddress: string;
+  takerFeeTokenAddress: string;
   filledBaseTokenAmount: BigNumber; // converted
   filledQuoteTokenAmount: BigNumber; // converted
   orderHash: string;
@@ -66,8 +68,7 @@ export interface OnChainEvent {
 /**
  * New Order Event
  */
-export interface RadarNewOrder extends MarketEvent, OrderEvent {
-}
+export interface RadarNewOrder extends MarketEvent, OrderEvent {}
 
 /**
  * Cancelled Order Event
@@ -89,8 +90,7 @@ export interface RadarRemoveOrder extends MarketEvent {
 /**
  * Fill Order Event
  */
-export interface RadarFillOrder extends RadarFill, OrderEvent {
-}
+export interface RadarFillOrder extends RadarFill, OrderEvent {}
 
 /**
  * WebSocket Event
