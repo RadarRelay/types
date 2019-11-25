@@ -1,16 +1,16 @@
-import { BigNumber } from "@0x/utils";
-import { ZeroEx } from "./zero-ex";
+import { BigNumber } from '@0x/utils';
+import { ZeroEx } from './zero-ex';
 
 // --- Enums ---------------------------------------------------------------- //
 
 export enum UserOrderType {
   BUY = 'BUY',
-  SELL = 'SELL'
+  SELL = 'SELL',
 }
 
 export enum RadarOrderType {
   BID = 'BID',
-  ASK = 'ASK'
+  ASK = 'ASK',
 }
 
 export enum RadarOrderState {
@@ -18,7 +18,7 @@ export enum RadarOrderState {
   FILLED = 'FILLED',
   CANCELLED = 'CANCELLED',
   EXPIRED = 'EXPIRED',
-  UNFUNDED = 'UNFUNDED'
+  UNFUNDED = 'UNFUNDED',
 }
 
 // --- Object interfaces ---------------------------------------------------- //
@@ -129,6 +129,8 @@ export interface UnsignedOrder {
   takerAddress: string;
   makerFee: BigNumber;
   takerFee: BigNumber;
+  makerFeeAssetData: string;
+  takerFeeAssetData: string;
   makerAssetAmount: BigNumber;
   takerAssetAmount: BigNumber;
   makerAssetData: string;

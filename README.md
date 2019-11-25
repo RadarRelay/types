@@ -1,8 +1,8 @@
-# types
+# @radar/relay-types
 
 Custom type definitions used by the Radar API and SDK
 
-[![npm version](https://badge.fury.io/js/%40radarrelay%2Ftypes.svg)](https://badge.fury.io/js/%40radarrelay%2Ftypes)
+[![npm version](https://badge.fury.io/js/%40radar%2Frelay-types.svg)](https://badge.fury.io/js/%40radar%2Frelay-types)
 
 ## Enums
 
@@ -227,6 +227,8 @@ interface UnsignedOrder {
   takerAddress: string;
   makerFee: BigNumber;
   takerFee: BigNumber;
+  makerFeeAssetData: string;
+  takerFeeAssetData: string;
   makerAssetAmount: BigNumber;
   takerAssetAmount: BigNumber;
   makerAssetData: string;
@@ -269,6 +271,8 @@ Fee information for a given market.
 interface RadarOrderFeeResponse {
   makerFee: BigNumber;
   takerFee: BigNumber;
+  makerFeeAssetData: string;
+  takerFeeAssetData: string;
   feeRecipientAddress: string;
   gasEstimate?: BigNumber;
  }
@@ -319,6 +323,8 @@ interface RadarFill extends MarketEvent, OnChainEvent {
   feeRecipientAddress: string;
   makerFeePaid: BigNumber; // converted
   takerFeePaid: BigNumber; // converted
+  makerFeeTokenAddress: string;
+  takerFeeTokenAddress: string;
   filledBaseTokenAmount: BigNumber; // converted
   filledQuoteTokenAmount: BigNumber; // converted
   orderHash: string;

@@ -1,5 +1,5 @@
-import { BigNumber } from "@0x/utils";
-import { ZeroEx } from "./zero-ex";
+import { BigNumber } from '@0x/utils';
+import { ZeroEx } from './zero-ex';
 
 /**
  * A response with price information and fillable orders at the best price.
@@ -18,6 +18,8 @@ export interface RadarMarketOrderResponse {
 export interface RadarOrderFeeResponse {
   makerFee: BigNumber;
   takerFee: BigNumber;
+  makerFeeAssetData: string;
+  takerFeeAssetData: string;
   feeRecipientAddress: string;
   gasEstimate?: BigNumber;
 }
