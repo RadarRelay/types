@@ -1,4 +1,4 @@
-# types
+# @radar/relay-types
 
 Custom type definitions used by the Radar API and SDK
 
