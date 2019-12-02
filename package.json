@@ -17,8 +17,8 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@0x/types": "^2.5.0-beta.2",
-    "@0x/utils": "^4.6.0-beta.2"
+    "@0x/types": "^3.0.0",
+    "@0x/utils": "^5.0.0"
   },
   "devDependencies": {
     "@radar/tslint-config": "^5.0.1",
