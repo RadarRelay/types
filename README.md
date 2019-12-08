@@ -162,19 +162,22 @@ ZeroEx Order
 
 ```javascript
 interface Order {
-  senderAddress: string;
+  chainId: number;
+  exchangeAddress: string;
   makerAddress: string;
   takerAddress: string;
-  makerFee: BigNumber;
-  takerFee: BigNumber;
+  feeRecipientAddress: string;
+  senderAddress: string;
   makerAssetAmount: BigNumber;
   takerAssetAmount: BigNumber;
+  makerFee: BigNumber;
+  takerFee: BigNumber;
+  expirationTimeSeconds: BigNumber;
+  salt: BigNumber;
   makerAssetData: string;
   takerAssetData: string;
-  salt: BigNumber;
-  exchangeAddress: string;
-  feeRecipientAddress: string;
-  expirationTimeSeconds: BigNumber;
+  makerFeeAssetData: string;
+  takerFeeAssetData: string;
 }
 ```
 
