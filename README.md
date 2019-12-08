@@ -222,6 +222,7 @@ An unsigned order at the specified quantity and price.
 
 ```javascript
 interface UnsignedOrder {
+  chainId: number;
   senderAddress: string;
   makerAddress: 'SET';
   takerAddress: string;
