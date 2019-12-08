@@ -1,6 +1,6 @@
 {
   "name": "@radar/relay-types",
-  "version": "3.0.0-beta",
+  "version": "3.0.0",
   "description": "TypeScript type definitions for the Radar Relay API and SDK.",
   "author": "RadarTech",
   "repository": {
