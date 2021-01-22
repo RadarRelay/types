@@ -4,9 +4,11 @@ Thank you for your interest in contributing to Radar! We welcome contributions f
 
 ### How to contribute
 
-If you'd like to contribute, please fork the repo, fix, commit and send a pull request against the `beta` branch for the maintainers to review and merge into the main code base. If you wish to submit more complex changes, please check with a core dev first on [Radar Relay Slack](https://radarrelay.slack.com/) in the #dev channel to ensure those changes are in-line with the general philosophy of the project and/or to get some early feedback which can make both your efforts easier as well as our review and merge procedures quick and simple.
+If you'd like to contribute, please fork the repo, fix, commit, and send a pull request against the `beta` branch. Our team of maintainers will review and merge into the main code base. 
 
-We encourage a “PR early” approach so create the PR as early as possible even without the fix/feature ready, so that devs and other contributors know you have picked up the issue. These early PRs should indicate an 'in progress' status by adding the 'WIP' label to the PR. Please make sure your contributions adhere to our coding guidelines:
+If you wish to submit more complex changes, please email us at `outreach@radar.tech` to ensure those changes are in-line with the general philosophy of the project. We can also give some early feedback to make the process easier.
+
+We encourage a “PR early” approach. Please open a draft PR as early as possible and mark it as `WIP`. This will give our devs and other contributors an indication of what you're working on, so they don't pick up the same issue.
 
 *   Pull requests adding features or refactoring should be opened against the `beta` branch
 *   Pull requests fixing bugs in the latest release version should be opened against the `master` branch
